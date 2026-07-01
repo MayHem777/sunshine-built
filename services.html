@@ -3,83 +3,19 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Building Services — Sunshine Built, Noosa</title>
-  <meta name="description" content="New home construction, renovations, extensions, insurance repairs, shop fit-outs, custom saunas and more. Sunshine Built — Noosa's expert licensed builders." />
-  <meta name="robots" content="index, follow" />
+  <title>Services — Sunshine Built, Noosa</title>
+  <meta name="description" content="New home construction, renovations, extensions, insurance repairs, shop fit-outs, custom saunas. Sunshine Built — Noosa's licensed builders." />
   <link rel="canonical" href="https://www.sunshinebuilt.com.au/services.html" />
-  <meta property="og:title" content="Services — Sunshine Built" />
-  <meta property="og:description" content="New homes, renovations, insurance repairs, shop fit-outs, carpentry and custom saunas. QBCC licensed." />
   <link rel="stylesheet" href="style.css" />
-  <style>
-    .page-hero { background: var(--navy); color: var(--white); padding: 80px 28px 70px; text-align: center; }
-    .page-hero .section-eyebrow { color: var(--gold); }
-    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.01em; }
-    .page-hero p { color: rgba(255,255,255,.55); max-width: 540px; margin: 1rem auto 0; line-height: 1.75; }
-
-    .service-section { padding: 80px 28px; }
-    .service-section:nth-child(odd) { background: var(--off-white); }
-    .service-section:nth-child(even) { background: var(--white); }
-    .service-inner {
-      max-width: 1100px;
-      margin: 0 auto;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 64px;
-      align-items: center;
-    }
-    .service-section:nth-child(even) .service-inner { direction: rtl; }
-    .service-section:nth-child(even) .service-inner > * { direction: ltr; }
-    @media (max-width: 800px) {
-      .service-inner { grid-template-columns: 1fr; gap: 32px; direction: ltr !important; }
-    }
-    .service-label {
-      font-size: .7rem;
-      font-weight: 700;
-      letter-spacing: .2em;
-      text-transform: uppercase;
-      color: var(--gold);
-      margin-bottom: .6rem;
-    }
-    .service-section h2 { font-size: clamp(1.5rem, 2.8vw, 2.1rem); font-weight: 800; margin-bottom: 1rem; color: var(--navy); line-height: 1.2; }
-    .service-section p { color: var(--muted); line-height: 1.8; font-size: .95rem; margin-bottom: .85rem; }
-    .service-list { list-style: none; padding: 0; margin: 1rem 0 1.5rem; display: grid; grid-template-columns: 1fr 1fr; gap: .4rem .75rem; }
-    .service-list li { font-size: .88rem; color: var(--text); padding-left: 1.2em; position: relative; }
-    .service-list li::before { content: '—'; position: absolute; left: 0; color: var(--gold); font-weight: 700; }
-    .service-photo {
-      background: var(--border);
-      border-radius: 6px;
-      aspect-ratio: 4/3;
-      display: flex; align-items: center; justify-content: center;
-      color: var(--muted); font-size: .85rem; text-align: center;
-      overflow: hidden;
-    }
-    .service-photo img { width: 100%; height: 100%; object-fit: cover; }
-
-    .cta-inline {
-      background: var(--navy);
-      color: var(--white);
-      border-radius: 6px;
-      padding: 2rem 2.5rem;
-      margin-top: 2.5rem;
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: 1.5rem;
-      flex-wrap: wrap;
-    }
-    .cta-inline p { margin: 0; font-size: .9rem; color: rgba(255,255,255,.6); }
-    .cta-inline strong { color: var(--white); display: block; font-size: 1.05rem; margin-bottom: .25rem; }
-  </style>
 </head>
 <body>
 
 <a class="sticky-call" href="tel:0401744844">Call Mitch — 0401 744 844</a>
 
-<!-- ══ NAV ══ -->
-<nav class="site-nav">
+<nav class="site-nav scrolled" id="site-nav">
   <div class="nav-inner">
-    <a href="index.html" class="nav-brand">
-      <div class="nav-brand-text">Sunshine Built<span>Licensed Builder · Noosa</span></div>
+    <a href="index.html" class="nav-logo-wrap">
+      <img src="images/logo.png" alt="Sunshine Built" class="nav-logo" />
     </a>
     <ul class="nav-links">
       <li><a href="index.html">Home</a></li>
@@ -88,7 +24,7 @@
       <li><a href="gallery.html">Gallery</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
-    <div class="nav-cta"><a href="contact.html" class="btn btn-gold">Free Quote</a></div>
+    <a class="nav-contact" href="tel:0401744844">0401 744 844</a>
     <button class="nav-hamburger" aria-label="Menu" onclick="document.getElementById('mob-nav').classList.toggle('open')">
       <span></span><span></span><span></span>
     </button>
@@ -99,215 +35,160 @@
     <a href="about.html">About</a>
     <a href="gallery.html">Gallery</a>
     <a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn btn-gold">Get a Free Quote</a>
+    <a href="contact.html" class="btn btn-olive">Get a Free Quote</a>
   </div>
 </nav>
 
-<!-- ══ PAGE HERO ══ -->
-<section class="page-hero">
-  <p class="section-eyebrow">What We Build</p>
+<div class="page-header">
+  <span class="eyebrow" style="color:var(--olive-lt)">What We Build</span>
   <h1>Building Services</h1>
-  <p>From the ground up — new builds, renovations, commercial fit-outs, and everything in between. One licensed builder, one standard of quality.</p>
-</section>
+  <p>One licensed builder. Six services. One standard of quality across all of them.</p>
+</div>
 
-<!-- ══ NEW HOME CONSTRUCTION ══ -->
-<section class="service-section" id="new-homes">
-  <div class="service-inner">
-    <div>
-      <p class="service-label">New Builds</p>
-      <h2>New Home Construction</h2>
-      <p>There's nothing quite like building your own home from scratch. We take your plans — whether you're working with an architect, a designer, or coming to us with ideas — and turn them into something you'll live in for decades.</p>
-      <p>We manage the entire build: slab, frame, lock-up, fit-out, and handover. You get one point of contact throughout, and a builder who is physically on site every day.</p>
-      <ul class="service-list">
-        <li>Custom new homes</li>
-        <li>Owner-builder support</li>
-        <li>Dual occupancy &amp; duplexes</li>
-        <li>Design &amp; construct</li>
-        <li>Knockdown &amp; rebuild</li>
-        <li>Rural &amp; acreage builds</li>
-      </ul>
-      <a href="contact.html" class="btn btn-navy">Get a Free Quote →</a>
-    </div>
-    <div class="service-photo">
-      <!-- PHOTO: <img src="/images/new-homes.jpg" alt="New home construction Noosa" /> -->
-      📷 Add project photo
-    </div>
-  </div>
-</section>
+<section class="section">
+  <div class="section-inner">
 
-<!-- ══ RENOVATIONS ══ -->
-<section class="service-section" id="renovations">
-  <div class="service-inner">
-    <div>
-      <p class="service-label">Renovations</p>
-      <h2>Renovations &amp; Extensions</h2>
-      <p>A well-planned renovation can transform how you live in your home. Whether you're expanding outward with a new room or extension, or transforming the spaces you already have — we deliver quality that lasts.</p>
-      <p>We handle the council approvals, certifiers, and all the trades, so you don't have to coordinate anything. Tell us what you want, and we make it happen.</p>
-      <ul class="service-list">
-        <li>Kitchen renovations</li>
-        <li>Bathroom renovations</li>
-        <li>Room additions</li>
-        <li>Second storey additions</li>
-        <li>Garage conversions</li>
-        <li>Granny flats</li>
-      </ul>
-      <a href="contact.html" class="btn btn-navy">Get a Free Quote →</a>
-    </div>
-    <div class="service-photo">
-      <!-- PHOTO: <img src="/images/renovations.jpg" alt="Home renovations Noosa" /> -->
-      📷 Add project photo
-    </div>
-  </div>
-</section>
-
-<!-- ══ INSURANCE ══ -->
-<section class="service-section" id="insurance">
-  <div class="service-inner">
-    <div>
-      <p class="service-label">Insurance</p>
-      <h2>Insurance Repairs</h2>
-      <p>Storm damage, flooding, fire damage, subsidence — whatever has happened to your home, we work with your insurer to get it back to its original condition. Or better.</p>
-      <p>We understand how to navigate the insurance repair process and can liaise directly with your insurer or assessor. We've handled everything from minor storm damage to near-complete rebuilds.</p>
-      <ul class="service-list">
-        <li>Storm &amp; flood damage</li>
-        <li>Fire damage repairs</li>
-        <li>Structural damage</li>
-        <li>Roof repairs &amp; replacement</li>
-        <li>Insurance scope reporting</li>
-        <li>Insurer liaison</li>
-      </ul>
-      <a href="contact.html" class="btn btn-navy">Get a Free Quote →</a>
-    </div>
-    <div class="service-photo">
-      <!-- PHOTO: <img src="/images/insurance.jpg" alt="Insurance repairs Noosa" /> -->
-      📷 Add project photo
-    </div>
-  </div>
-</section>
-
-<!-- ══ SHOP FIT-OUTS ══ -->
-<section class="service-section" id="fitouts">
-  <div class="service-inner">
-    <div>
-      <p class="service-label">Commercial</p>
-      <h2>Shop Fit-Outs</h2>
-      <p>Getting a commercial space built out requires a builder who understands that time is money. We work efficiently, respect your timeline, and deliver a result that reflects your brand and your vision.</p>
-      <p>From cafés and retail to professional offices and hospitality venues — we've done it all, and we know what it takes to get a commercial space open and trading.</p>
-      <ul class="service-list">
-        <li>Retail fit-outs</li>
-        <li>Café &amp; restaurant fit-outs</li>
-        <li>Office fit-outs</li>
-        <li>Tenancy refurbishments</li>
-        <li>Custom shopfronts</li>
-        <li>Compliant commercial builds</li>
-      </ul>
-      <a href="contact.html" class="btn btn-navy">Get a Free Quote →</a>
-    </div>
-    <div class="service-photo">
-      <!-- PHOTO: <img src="/images/fitouts.jpg" alt="Shop fit-outs Noosa Sunshine Coast" /> -->
-      📷 Add project photo
-    </div>
-  </div>
-</section>
-
-<!-- ══ CARPENTRY ══ -->
-<section class="service-section" id="carpentry">
-  <div class="service-inner">
-    <div>
-      <p class="service-label">Carpentry</p>
-      <h2>Carpentry, Decks &amp; Joinery</h2>
-      <p>Good carpentry is the difference between a house that looks finished and one that looks built. We bring the same precision and care to bespoke joinery and decks that we bring to a full new home.</p>
-      <p>Outdoor living spaces, custom cabinetry, feature walls, pergolas, and detailed finish carpentry — we take it seriously, because it shows.</p>
-      <ul class="service-list">
-        <li>Decks &amp; pergolas</li>
-        <li>Custom cabinetry</li>
-        <li>Feature walls &amp; panelling</li>
-        <li>Timber framing</li>
-        <li>Stairs &amp; balustrades</li>
-        <li>Outdoor structures</li>
-      </ul>
-      <a href="contact.html" class="btn btn-navy">Get a Free Quote →</a>
-    </div>
-    <div class="service-photo">
-      <!-- PHOTO: <img src="/images/carpentry.jpg" alt="Custom carpentry and decks Noosa" /> -->
-      📷 Add project photo
-    </div>
-  </div>
-</section>
-
-<!-- ══ SAUNAS ══ -->
-<section class="service-section" id="saunas">
-  <div class="service-inner">
-    <div>
-      <p class="service-label">Custom Saunas</p>
-      <h2>Custom Sauna Builds</h2>
-      <p>Custom saunas built properly — with sustainably sourced timber, correct ventilation, and the right insulation to hold heat efficiently. We've designed and built saunas of every shape and size, from compact indoor units to full outdoor sauna rooms.</p>
-      <p>If you've seen something you like, bring us the reference and we'll build it. Or we can walk you through what works best for your space and how you plan to use it.</p>
-      <ul class="service-list">
-        <li>Indoor barrel saunas</li>
-        <li>Outdoor sauna rooms</li>
-        <li>Steam rooms</li>
-        <li>Sauna cabin builds</li>
-        <li>Custom timber selection</li>
-        <li>Heater &amp; control installation</li>
-      </ul>
-      <div class="cta-inline">
-        <div>
-          <strong>Interested in a custom sauna?</strong>
-          <p>Tell us your size, preferred timber, and how you want to use it — we'll come back with a quote.</p>
-        </div>
-        <a href="contact.html" class="btn btn-gold">Get a Sauna Quote →</a>
+    <div class="services-page-item" id="new-homes">
+      <div class="spi-photo photo-placeholder"><!-- PHOTO: <img src="images/new-homes.jpg" alt="New home Noosa" /> --></div>
+      <div>
+        <p class="spi-num">01 — New Builds</p>
+        <h2 class="spi-title">New Home Construction</h2>
+        <p class="spi-body">There's nothing quite like building your own home from scratch. We take your plans and turn them into something you'll live in for decades — managing the entire build from slab to handover.</p>
+        <p class="spi-body">You get one point of contact throughout, and a builder who is physically on site every day.</p>
+        <ul class="spi-list">
+          <li>Custom new homes</li>
+          <li>Knockdown &amp; rebuild</li>
+          <li>Dual occupancy</li>
+          <li>Rural &amp; acreage builds</li>
+          <li>Design &amp; construct</li>
+          <li>Owner-builder support</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline">Enquire About This</a>
       </div>
     </div>
-    <div class="service-photo">
-      <!-- PHOTO: <img src="/images/sauna.jpg" alt="Custom sauna build Noosa" /> -->
-      📷 Add sauna photo
+
+    <div class="services-page-item reverse" id="renovations">
+      <div class="spi-photo photo-placeholder"><!-- PHOTO: <img src="images/renovations.jpg" alt="Renovation Noosa" /> --></div>
+      <div>
+        <p class="spi-num">02 — Renovations</p>
+        <h2 class="spi-title">Renovations &amp; Extensions</h2>
+        <p class="spi-body">A well-planned renovation can transform how you live in your home. We handle approvals, certifiers, and all trades — you don't need to coordinate anything.</p>
+        <p class="spi-body">From a kitchen renovation to a full second storey addition, we deliver quality that lasts.</p>
+        <ul class="spi-list">
+          <li>Kitchen renovations</li>
+          <li>Bathroom renovations</li>
+          <li>Room additions</li>
+          <li>Second storey additions</li>
+          <li>Garage conversions</li>
+          <li>Granny flats</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline">Enquire About This</a>
+      </div>
     </div>
+
+    <div class="services-page-item" id="insurance">
+      <div class="spi-photo photo-placeholder"><!-- PHOTO: <img src="images/insurance.jpg" alt="Insurance repairs" /> --></div>
+      <div>
+        <p class="spi-num">03 — Insurance</p>
+        <h2 class="spi-title">Insurance Repairs</h2>
+        <p class="spi-body">Storm damage, flooding, fire damage, subsidence — we work with your insurer to get your home back to its original condition. We've handled everything from minor storm damage to near-complete rebuilds.</p>
+        <ul class="spi-list">
+          <li>Storm &amp; flood damage</li>
+          <li>Fire damage repairs</li>
+          <li>Structural damage</li>
+          <li>Roof repair &amp; replacement</li>
+          <li>Scope reporting</li>
+          <li>Insurer liaison</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline">Enquire About This</a>
+      </div>
+    </div>
+
+    <div class="services-page-item reverse" id="fitouts">
+      <div class="spi-photo photo-placeholder"><!-- PHOTO: <img src="images/fitouts.jpg" alt="Shop fit-out" /> --></div>
+      <div>
+        <p class="spi-num">04 — Commercial</p>
+        <h2 class="spi-title">Shop Fit-Outs</h2>
+        <p class="spi-body">We work efficiently, respect your timeline, and deliver a result that reflects your brand. From cafés and retail to offices and hospitality venues — built on time and on budget.</p>
+        <ul class="spi-list">
+          <li>Retail fit-outs</li>
+          <li>Café &amp; restaurant fit-outs</li>
+          <li>Office fit-outs</li>
+          <li>Tenancy refurbishments</li>
+          <li>Custom shopfronts</li>
+          <li>Commercial builds</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline">Enquire About This</a>
+      </div>
+    </div>
+
+    <div class="services-page-item" id="carpentry">
+      <div class="spi-photo photo-placeholder"><!-- PHOTO: <img src="images/carpentry.jpg" alt="Decks and carpentry" /> --></div>
+      <div>
+        <p class="spi-num">05 — Carpentry</p>
+        <h2 class="spi-title">Carpentry, Decks &amp; Joinery</h2>
+        <p class="spi-body">Good carpentry is the difference between a house that looks finished and one that looks built. We bring the same precision to custom joinery and decks that we bring to a full new home.</p>
+        <ul class="spi-list">
+          <li>Decks &amp; pergolas</li>
+          <li>Custom cabinetry</li>
+          <li>Feature walls</li>
+          <li>Timber framing</li>
+          <li>Stairs &amp; balustrades</li>
+          <li>Outdoor structures</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline">Enquire About This</a>
+      </div>
+    </div>
+
+    <div class="services-page-item reverse" id="saunas">
+      <div class="spi-photo photo-placeholder"><!-- PHOTO: <img src="images/sauna.jpg" alt="Custom sauna" /> --></div>
+      <div>
+        <p class="spi-num">06 — Saunas</p>
+        <h2 class="spi-title">Custom Sauna Builds</h2>
+        <p class="spi-body">Properly built saunas — sustainably sourced timber, correct ventilation, insulation that holds heat efficiently. We've designed and built saunas of every shape and size, from compact indoor units to full outdoor sauna rooms.</p>
+        <ul class="spi-list">
+          <li>Indoor barrel saunas</li>
+          <li>Outdoor sauna rooms</li>
+          <li>Steam rooms</li>
+          <li>Sauna cabin builds</li>
+          <li>Custom timber selection</li>
+          <li>Heater &amp; control installation</li>
+        </ul>
+        <a href="contact.html" class="btn btn-outline">Enquire About This</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
-<!-- ══ CTA BAND ══ -->
-<div class="cta-band">
-  <h2>Not Sure Which Service You Need?</h2>
-  <p>Give Mitch a call or send through an enquiry — we'll point you in the right direction, no obligation.</p>
-  <div class="cta-band-btns">
-    <a href="tel:0401744844" class="btn btn-gold">Call 0401 744 844</a>
-    <a href="contact.html" class="btn btn-outline-white">Send an Enquiry</a>
+<div class="cta-block">
+  <h2>Not sure which service fits?</h2>
+  <p>Call Mitch and describe what you're after — we'll point you in the right direction.</p>
+  <div class="cta-block-btns">
+    <a href="tel:0401744844" class="btn btn-olive btn-lg">0401 744 844</a>
+    <a href="contact.html" class="btn btn-outline-white btn-lg">Send an Enquiry</a>
   </div>
 </div>
 
-<!-- ══ FOOTER ══ -->
 <footer class="site-footer">
   <div class="footer-inner">
-    <div class="footer-brand">
-      <div class="brand-name">Sunshine Built</div>
-      <div class="brand-tag">Licensed Builder · Noosa</div>
-      <p>Noosa's expert builders. Quality construction, renovations, and fit-outs across the Sunshine Coast. QBCC licensed and fully insured.</p>
-    </div>
-    <div class="footer-col">
-      <h4>Services</h4>
-      <ul>
-        <li><a href="#new-homes">New Home Construction</a></li>
-        <li><a href="#renovations">Renovations &amp; Extensions</a></li>
-        <li><a href="#insurance">Insurance Repairs</a></li>
-        <li><a href="#fitouts">Shop Fit-Outs</a></li>
-        <li><a href="#carpentry">Carpentry &amp; Decks</a></li>
-        <li><a href="#saunas">Custom Saunas</a></li>
-      </ul>
-    </div>
-    <div class="footer-col">
-      <h4>Contact</h4>
-      <p>
-        📞 <a href="tel:0401744844">0401 744 844</a><br><br>
-        ✉️ <a href="mailto:info@sunshinebuilt.com.au">info@sunshinebuilt.com.au</a><br><br>
-        📍 Noosa, QLD<br><br>
-        🏛️ QBCC #15205110
-      </p>
+    <div class="footer-logo"><img src="images/logo.png" alt="Sunshine Built" /></div>
+    <ul class="footer-nav">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="footer-contact">
+      <p><a href="tel:0401744844">0401 744 844</a></p>
+      <p><a href="mailto:info@sunshinebuilt.com.au">info@sunshinebuilt.com.au</a></p>
+      <p>Noosa, QLD</p>
     </div>
   </div>
   <div class="footer-bottom">
-    <span>© 2026 Sunshine Built. All rights reserved.</span>
-    <a href="#" style="color:rgba(255,255,255,.25);">Back to top ↑</a>
+    <span>© 2026 Sunshine Built. QBCC #15205110.</span>
+    <a href="#" style="color:rgba(255,255,255,.15)">Back to top ↑</a>
   </div>
 </footer>
 
