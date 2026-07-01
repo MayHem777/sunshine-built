@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Project Gallery — Sunshine Built, Noosa</title>
+  <meta name="description" content="Browse Sunshine Built's completed projects — new homes, renovations, shop fit-outs, custom saunas and more across Noosa and the Sunshine Coast." />
+  <meta name="robots" content="index, follow" />
+  <link rel="canonical" href="https://www.sunshinebuilt.com.au/gallery.html" />
+  <meta property="og:title" content="Gallery — Sunshine Built" />
+  <meta property="og:description" content="New homes, renovations, fit-outs and saunas. Browse our completed projects." />
+  <link rel="stylesheet" href="style.css" />
+  <style>
+    .page-hero { background: var(--navy); color: var(--white); padding: 80px 28px 70px; text-align: center; }
+    .page-hero .section-eyebrow { color: var(--gold); }
+    .page-hero h1 { font-size: clamp(2rem, 4vw, 3rem); font-weight: 800; letter-spacing: -.01em; }
+    .page-hero p { color: rgba(255,255,255,.55); max-width: 540px; margin: 1rem auto 0; line-height: 1.75; }
+
+    /* Filter tabs */
+    .filter-bar { background: var(--off-white); border-bottom: 1px solid var(--border); padding: 20px 28px; }
+    .filter-inner { max-width: 1100px; margin: 0 auto; display: flex; gap: .5rem; flex-wrap: wrap; }
+    .filter-btn {
+      padding: .45rem 1.1rem;
+      border: 1.5px solid var(--border);
+      border-radius: 99px;
+      background: transparent;
+      font-size: .82rem;
+      font-weight: 600;
+      color: var(--muted);
+      cursor: pointer;
+      transition: all .2s;
+    }
+    .filter-btn.active, .filter-btn:hover { border-color: var(--navy); background: var(--navy); color: var(--white); }
+
+    /* Gallery grid */
+    .gallery-section { padding: 60px 28px 80px; }
+    .gallery-inner { max-width: 1100px; margin: 0 auto; }
+    .gallery-cat-title {
+      font-size: .7rem;
+      font-weight: 700;
+      letter-spacing: .2em;
+      text-transform: uppercase;
+      color: var(--gold);
+      margin-bottom: 1.25rem;
+      padding-bottom: .5rem;
+      border-bottom: 1px solid var(--border);
+    }
+    .gallery-cat { margin-bottom: 3rem; }
+    .gallery-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: .75rem;
+    }
+    @media (max-width: 700px) { .gallery-grid { grid-template-columns: repeat(2, 1fr); } }
+    .gallery-item {
+      aspect-ratio: 4/3;
+      background: var(--border);
+      border-radius: 4px;
+      overflow: hidden;
+      position: relative;
+      cursor: pointer;
+    }
+    .gallery-item img { width: 100%; height: 100%; object-fit: cover; display: block; transition: transform .35s ease; }
+    .gallery-item:hover img { transform: scale(1.04); }
+    .gallery-placeholder {
+      width: 100%; height: 100%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: .82rem; color: var(--muted); text-align: center; padding: 1rem;
+      background: linear-gradient(135deg, var(--off-white), var(--border));
+    }
+    .gallery-caption {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(30,40,50,.85), transparent);
+      color: var(--white);
+      font-size: .78rem;
+      padding: .6rem .75rem .5rem;
+      opacity: 0;
+      transition: opacity .25s;
+    }
+    .gallery-item:hover .gallery-caption { opacity: 1; }
+
+    /* Lightbox */
+    .lightbox {
+      display: none;
+      position: fixed; inset: 0;
+      background: rgba(0,0,0,.92);
+      z-index: 9999;
+      align-items: center; justify-content: center;
+    }
+    .lightbox.open { display: flex; }
+    .lightbox img { max-width: 90vw; max-height: 90vh; border-radius: 4px; object-fit: contain; }
+    .lightbox-close {
+      position: absolute; top: 20px; right: 28px;
+      background: none; border: none; color: var(--white);
+      font-size: 2rem; cursor: pointer; line-height: 1;
+    }
+  </style>
+</head>
+<body>
+
+<a class="sticky-call" href="tel:0401744844">Call Mitch — 0401 744 844</a>
+
+<!-- ══ NAV ══ -->
+<nav class="site-nav">
+  <div class="nav-inner">
+    <a href="index.html" class="nav-brand">
+      <div class="nav-brand-text">Sunshine Built<span>Licensed Builder · Noosa</span></div>
+    </a>
+    <ul class="nav-links">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="services.html">Services</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="gallery.html" class="active">Gallery</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-cta"><a href="contact.html" class="btn btn-gold">Free Quote</a></div>
+    <button class="nav-hamburger" aria-label="Menu" onclick="document.getElementById('mob-nav').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </button>
+  </div>
+  <div class="nav-mobile" id="mob-nav">
+    <a href="index.html">Home</a>
+    <a href="services.html">Services</a>
+    <a href="about.html">About</a>
+    <a href="gallery.html" class="active">Gallery</a>
+    <a href="contact.html">Contact</a>
+    <a href="contact.html" class="btn btn-gold">Get a Free Quote</a>
+  </div>
+</nav>
+
+<!-- ══ PAGE HERO ══ -->
+<section class="page-hero">
+  <p class="section-eyebrow">Our Work</p>
+  <h1>Project Gallery</h1>
+  <p>A selection of completed projects across Noosa and the Sunshine Coast — new builds, renovations, fit-outs, and custom saunas.</p>
+</section>
+
+<!-- ══ GALLERY ══ -->
+<section class="gallery-section">
+  <div class="gallery-inner">
+
+    <!-- New Homes -->
+    <div class="gallery-cat" id="cat-homes">
+      <div class="gallery-cat-title">New Home Construction</div>
+      <div class="gallery-grid">
+        <!-- PHOTOS: <div class="gallery-item"><img src="/images/gallery/home-1.jpg" alt="New home Noosa" /><div class="gallery-caption">Custom build — Noosaville</div></div> -->
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add new home photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add new home photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add new home photo</div></div>
+      </div>
+    </div>
+
+    <!-- Renovations -->
+    <div class="gallery-cat" id="cat-renos">
+      <div class="gallery-cat-title">Renovations &amp; Extensions</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add renovation photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add renovation photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add renovation photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add renovation photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add renovation photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add renovation photo</div></div>
+      </div>
+    </div>
+
+    <!-- Fit-Outs -->
+    <div class="gallery-cat" id="cat-fitouts">
+      <div class="gallery-cat-title">Shop Fit-Outs</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add fit-out photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add fit-out photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add fit-out photo</div></div>
+      </div>
+    </div>
+
+    <!-- Carpentry -->
+    <div class="gallery-cat" id="cat-carpentry">
+      <div class="gallery-cat-title">Carpentry, Decks &amp; Joinery</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add carpentry photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add carpentry photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add carpentry photo</div></div>
+      </div>
+    </div>
+
+    <!-- Saunas -->
+    <div class="gallery-cat" id="cat-saunas">
+      <div class="gallery-cat-title">Custom Saunas</div>
+      <div class="gallery-grid">
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add sauna photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add sauna photo</div></div>
+        <div class="gallery-item"><div class="gallery-placeholder">📷 Add sauna photo</div></div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══ CTA BAND ══ -->
+<div class="cta-band">
+  <h2>Like What You See?</h2>
+  <p>Get in touch for a free, no-obligation quote on your project.</p>
+  <div class="cta-band-btns">
+    <a href="tel:0401744844" class="btn btn-gold">Call Mitch — 0401 744 844</a>
+    <a href="contact.html" class="btn btn-outline-white">Send an Enquiry</a>
+  </div>
+</div>
+
+<!-- ══ FOOTER ══ -->
+<footer class="site-footer">
+  <div class="footer-inner">
+    <div class="footer-brand">
+      <div class="brand-name">Sunshine Built</div>
+      <div class="brand-tag">Licensed Builder · Noosa</div>
+      <p>Noosa's expert builders. Quality construction, renovations, and fit-outs across the Sunshine Coast. QBCC licensed and fully insured.</p>
+    </div>
+    <div class="footer-col">
+      <h4>Services</h4>
+      <ul>
+        <li><a href="services.html#new-homes">New Home Construction</a></li>
+        <li><a href="services.html#renovations">Renovations &amp; Extensions</a></li>
+        <li><a href="services.html#insurance">Insurance Repairs</a></li>
+        <li><a href="services.html#fitouts">Shop Fit-Outs</a></li>
+        <li><a href="services.html#carpentry">Carpentry &amp; Decks</a></li>
+        <li><a href="services.html#saunas">Custom Saunas</a></li>
+      </ul>
+    </div>
+    <div class="footer-col">
+      <h4>Contact</h4>
+      <p>
+        📞 <a href="tel:0401744844">0401 744 844</a><br><br>
+        ✉️ <a href="mailto:info@sunshinebuilt.com.au">info@sunshinebuilt.com.au</a><br><br>
+        📍 Noosa, QLD<br><br>
+        🏛️ QBCC #15205110
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2026 Sunshine Built. All rights reserved.</span>
+    <a href="#" style="color:rgba(255,255,255,.25);">Back to top ↑</a>
+  </div>
+</footer>
+
+</body>
+</html>
