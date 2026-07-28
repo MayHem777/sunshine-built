@@ -1,232 +1,458 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en-AU">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Sunshine Built — Licensed Builder, Noosa &amp; Sunshine Coast</title>
-  <meta name="description" content="Sunshine Built — Noosa's expert builders. New homes, renovations, extensions, insurance repairs, shop fit-outs and custom saunas. QBCC licensed. Free quotes." />
-  <meta name="robots" content="index, follow" />
-  <link rel="canonical" href="https://www.sunshinebuilt.com.au/" />
-  <meta property="og:type" content="website" />
-  <meta property="og:title" content="Sunshine Built — Licensed Builder, Noosa" />
-  <meta property="og:description" content="20+ years. New homes, renovations, insurance repairs, custom saunas. QBCC #15205110." />
-  <meta property="og:image" content="/images/og-image.jpg" />
-  <script type="application/ld+json">
-  {"@context":"https://schema.org","@type":"GeneralContractor","name":"Sunshine Built","url":"https://www.sunshinebuilt.com.au","telephone":"+61401744844","email":"info@sunshinebuilt.com.au","address":{"@type":"PostalAddress","addressLocality":"Noosa","addressRegion":"QLD","addressCountry":"AU"},"hasCredential":"QBCC Licence #15205110"}
-  </script>
-  <link rel="stylesheet" href="style.css" />
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<title>Sunshine Built — Licensed Builder, Noosa &amp; Sunshine Coast | QBCC 15205110</title>
+<meta name="description" content="Sunshine Built is a QBCC licensed building company in Noosa. New homes, renovations and extensions, insurance repairs, shop fit-outs, carpentry and custom saunas across the Sunshine Coast. Call 0401 744 844." />
+<meta name="robots" content="index, follow" />
+<link rel="canonical" href="https://www.sunshinebuilt.com.au/" />
+
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://www.sunshinebuilt.com.au/" />
+<meta property="og:title" content="Sunshine Built — Licensed Builder, Noosa &amp; Sunshine Coast" />
+<meta property="og:description" content="Twenty years on the tools. New homes, renovations, insurance repairs, fit-outs and custom saunas. QBCC 15205110." />
+<meta property="og:image" content="https://www.sunshinebuilt.com.au/images/sb-logo-olive.png" />
+<meta name="twitter:card" content="summary" />
+
+<link rel="icon" href="images/favicon-32.png" sizes="32x32" type="image/png" />
+<link rel="apple-touch-icon" href="images/sb-icon-180.png" />
+<meta name="theme-color" content="#1a1a16" />
+
+<link rel="preconnect" href="https://fonts.googleapis.com" />
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+<link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
+
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"GeneralContractor","name":"Sunshine Built","url":"https://www.sunshinebuilt.com.au/","image":"https://www.sunshinebuilt.com.au/images/sb-logo-olive.png","telephone":"+61401744844","email":"info@sunshinebuilt.com.au","address":{"@type":"PostalAddress","addressLocality":"Noosa","addressRegion":"QLD","addressCountry":"AU"},"areaServed":"Noosa and the Sunshine Coast, QLD","hasCredential":"QBCC Licence 15205110","description":"Licensed building company in Noosa delivering new homes, renovations and extensions, insurance repairs, shop fit-outs, carpentry and custom saunas."}
+</script>
+
+<style>
+/* ═══ RESET ═══ */
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+
+/* ═══ TOKENS ═══ */
+:root{
+  --ink:#1a1a16;
+  --ink-soft:#3a3930;
+  --olive:#626637;
+  --olive-dk:#474a26;
+  --paper:#f4efe5;
+  --paper-lt:#fdfcf8;
+  --rule:#cfc8b8;
+  --rule-dim:#e2dbcc;
+  --muted:#79786a;
+  --gut:clamp(1.25rem,5vw,4rem);
+  --maxw:1120px;
+}
+
+html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+body{
+  font-family:'Archivo',system-ui,-apple-system,'Segoe UI',sans-serif;
+  background:var(--paper-lt);
+  color:var(--ink);
+  font-size:clamp(1rem,.96rem + .2vw,1.075rem);
+  line-height:1.62;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;height:auto}
+a{color:inherit;text-decoration:none}
+:focus-visible{outline:2px solid var(--olive);outline-offset:3px}
+
+.wrap{max-width:var(--maxw);margin:0 auto;padding-inline:var(--gut)}
+
+/* ═══ MONO UTILITY LABEL ═══ */
+.mono{
+  font-family:'IBM Plex Mono',ui-monospace,'SFMono-Regular',Menlo,monospace;
+  font-size:.68rem;
+  letter-spacing:.16em;
+  text-transform:uppercase;
+  font-weight:500;
+}
+
+/* ═══ TOP STRIP ═══ */
+.topstrip{
+  background:var(--ink);
+  color:rgba(244,239,229,.72);
+  border-bottom:1px solid rgba(244,239,229,.1);
+}
+.topstrip .wrap{
+  display:flex;flex-wrap:wrap;gap:.5rem 1.5rem;
+  align-items:center;justify-content:space-between;
+  padding-block:.7rem;
+}
+.topstrip span{white-space:nowrap}
+.topstrip .ts-licence{color:#b9bf7e}
+
+/* ═══ HERO ═══ */
+.hero{
+  background:var(--ink);
+  color:var(--paper);
+  padding-block:clamp(3rem,8vw,6rem) clamp(3.5rem,9vw,7rem);
+  position:relative;
+  overflow:hidden;
+}
+/* faint drafting grid — the only ambient texture on the page */
+.hero::before{
+  content:"";position:absolute;inset:0;
+  background-image:
+    linear-gradient(rgba(244,239,229,.045) 1px,transparent 1px),
+    linear-gradient(90deg,rgba(244,239,229,.045) 1px,transparent 1px);
+  background-size:64px 64px;
+  mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 25%,transparent 78%);
+  -webkit-mask-image:radial-gradient(ellipse 90% 70% at 50% 0%,#000 25%,transparent 78%);
+  pointer-events:none;
+}
+.hero .wrap{position:relative}
+
+.hero-logo{width:clamp(200px,26vw,272px);margin-bottom:clamp(2rem,5vw,3rem)}
+
+/* dimension line — the structural device: a measured span */
+.dim{display:flex;align-items:center;gap:.85rem;margin-bottom:1.4rem}
+.dim-tick{width:1px;height:13px;background:rgba(244,239,229,.5);flex:none}
+.dim-line{
+  flex:1;height:1px;
+  background:rgba(244,239,229,.28);
+  position:relative;min-width:16px;
+}
+.dim-label{
+  color:rgba(244,239,229,.62);
+  flex:none;
+}
+
+h1{
+  font-size:clamp(2.1rem,1.25rem + 4.1vw,4.15rem);
+  line-height:1.02;
+  font-weight:600;
+  letter-spacing:-.025em;
+  max-width:16ch;
+  text-wrap:balance;
+}
+h1 em{font-style:normal;color:#b9bf7e}
+
+.hero-sub{
+  margin-top:1.5rem;
+  max-width:54ch;
+  color:rgba(244,239,229,.76);
+  font-size:clamp(1rem,.94rem + .32vw,1.2rem);
+}
+
+.hero-ctas{display:flex;flex-wrap:wrap;gap:.85rem;margin-top:clamp(2rem,4vw,2.75rem)}
+@media(max-width:559px){
+  .hero-ctas{display:grid;grid-template-columns:1fr;gap:.7rem}
+}
+
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:.6rem;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.76rem;letter-spacing:.13em;text-transform:uppercase;font-weight:500;
+  padding:1.05rem 1.9rem;
+  border:1px solid transparent;
+  transition:background .18s,color .18s,border-color .18s;
+}
+.btn-solid{background:var(--olive);color:#fff}
+.btn-solid:hover{background:#767c42}
+.btn-ghost{border-color:rgba(244,239,229,.32);color:var(--paper)}
+.btn-ghost:hover{border-color:var(--paper);background:rgba(244,239,229,.08)}
+
+/* ═══ SCALE RULE DIVIDER ═══ */
+.scale{height:16px;background:var(--paper);border-bottom:1px solid var(--rule);position:relative}
+.scale::before{
+  content:"";position:absolute;inset:0;
+  background-image:linear-gradient(90deg,var(--rule) 1px,transparent 1px);
+  background-size:16px 100%;
+  background-position:bottom;
+  opacity:.85;
+}
+
+/* ═══ SECTIONS ═══ */
+.band{padding-block:clamp(3rem,7vw,5.25rem)}
+.band-paper{background:var(--paper)}
+
+.sec-head{display:flex;align-items:baseline;gap:1rem;margin-bottom:2.25rem}
+.sec-head .mono{color:var(--olive);flex:none}
+.sec-head .sec-rule{flex:1;height:1px;background:var(--rule)}
+
+h2{
+  font-size:clamp(1.5rem,1.2rem + 1.3vw,2.15rem);
+  line-height:1.14;font-weight:600;letter-spacing:-.018em;
+}
+
+/* ═══ SERVICES GRID ═══ */
+.svc{
+  display:grid;
+  grid-template-columns:repeat(auto-fit,minmax(255px,1fr));
+  border-top:1px solid var(--rule);
+  border-left:1px solid var(--rule);
+}
+.svc > div{
+  border-right:1px solid var(--rule);
+  border-bottom:1px solid var(--rule);
+  padding:1.6rem 1.5rem 1.75rem;
+  background:var(--paper-lt);
+}
+.svc h3{
+  font-size:1.06rem;font-weight:600;letter-spacing:-.01em;
+  margin:.6rem 0 .45rem;
+}
+.svc p{color:var(--muted);font-size:.94rem;line-height:1.55}
+.svc .mono{color:var(--olive)}
+
+/* ═══ ABOUT ═══ */
+.about-grid{display:grid;gap:clamp(1.75rem,4vw,3.5rem);grid-template-columns:1fr}
+@media(min-width:820px){.about-grid{grid-template-columns:1.15fr .85fr;align-items:start}}
+.about-lead{
+  font-size:clamp(1.2rem,1.05rem + .75vw,1.6rem);
+  line-height:1.35;font-weight:500;letter-spacing:-.015em;
+  text-wrap:pretty;
+}
+.about-body{margin-top:1.1rem;color:var(--ink-soft);max-width:58ch}
+.about-body + .about-body{margin-top:.85rem}
+
+.facts{border-top:1px solid var(--rule)}
+.facts div{
+  display:flex;justify-content:space-between;gap:1rem;
+  padding:.85rem 0;border-bottom:1px solid var(--rule-dim);
+}
+.facts dt{color:var(--muted)}
+.facts dd{font-weight:600;text-align:right}
+
+/* ═══ TITLE BLOCK — signature ═══ */
+.tb{
+  border:1px solid var(--ink);
+  background:var(--paper-lt);
+}
+.tb-head{
+  display:flex;flex-wrap:wrap;gap:.5rem 1.25rem;
+  justify-content:space-between;align-items:center;
+  background:var(--ink);color:rgba(244,239,229,.8);
+  padding:.75rem 1.25rem;
+}
+.tb-head .tb-h-title{color:var(--paper);letter-spacing:.2em}
+
+.tb-grid{display:grid;grid-template-columns:1fr}
+@media(min-width:720px){.tb-grid{grid-template-columns:repeat(3,1fr)}}
+.tb-cell{
+  padding:1.35rem 1.25rem;
+  border-bottom:1px solid var(--rule);
+  border-right:1px solid var(--rule);
+}
+.tb-cell:last-child{border-right:0}
+@media(max-width:719px){.tb-cell{border-right:0}}
+.tb-cell .mono{color:var(--muted);display:block;margin-bottom:.4rem}
+.tb-val{font-size:1.06rem;font-weight:600;line-height:1.3}
+.tb-val small{display:block;font-weight:400;font-size:.9rem;color:var(--muted);margin-top:.15rem}
+
+/* contact row — the page's actual job */
+.tb-contact{display:grid;grid-template-columns:1fr}
+@media(min-width:720px){.tb-contact{grid-template-columns:1fr 1fr}}
+.tb-contact a{
+  display:block;padding:1.6rem 1.25rem;
+  border-right:1px solid var(--rule);
+  transition:background .18s;
+}
+.tb-contact a:last-child{border-right:0}
+@media(max-width:719px){
+  .tb-contact a{border-right:0;border-bottom:1px solid var(--rule)}
+  .tb-contact a:last-child{border-bottom:0}
+}
+.tb-contact a:hover{background:var(--paper)}
+.tb-contact .mono{color:var(--muted);display:block;margin-bottom:.35rem}
+.tb-big{
+  font-size:clamp(1.25rem,1.05rem + 1vw,1.75rem);
+  font-weight:600;letter-spacing:-.02em;color:var(--olive);
+  word-break:break-word;
+}
+
+/* ═══ FOOTER ═══ */
+.foot{background:var(--ink);color:rgba(244,239,229,.55);padding-block:2.25rem}
+.foot .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
+.foot img{width:150px;opacity:.9}
+.foot a:hover{color:var(--paper)}
+
+/* ═══ MOBILE STICKY CALL ═══ */
+.callbar{
+  position:fixed;left:0;right:0;bottom:0;z-index:50;
+  display:none;
+  background:var(--olive);color:#fff;
+  text-align:center;padding:.95rem 1rem;
+  font-family:'IBM Plex Mono',monospace;
+  font-size:.8rem;letter-spacing:.12em;text-transform:uppercase;font-weight:500;
+  box-shadow:0 -2px 14px rgba(26,26,22,.22);
+}
+@media(max-width:719px){
+  .callbar{display:block}
+  body{padding-bottom:3.4rem}
+}
+
+@media(prefers-reduced-motion:reduce){
+  html{scroll-behavior:auto}
+  *{transition-duration:.01ms !important;animation-duration:.01ms !important}
+}
+</style>
 </head>
 <body>
 
-<a class="sticky-call" href="tel:0401744844">Call Mitch — 0401 744 844</a>
-
-<!-- ══ NAV ══ -->
-<nav class="site-nav" id="site-nav">
-  <div class="nav-inner">
-    <a href="index.html" class="nav-logo-wrap">
-      <img src="images/logo.png" alt="Sunshine Built" class="nav-logo" />
-    </a>
-    <ul class="nav-links">
-      <li><a href="index.html" class="active">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <a class="nav-contact" href="tel:0401744844">0401 744 844</a>
-    <button class="nav-hamburger" aria-label="Menu" onclick="document.getElementById('mob-nav').classList.toggle('open')">
-      <span></span><span></span><span></span>
-    </button>
+<!-- ══ TOP STRIP ══ -->
+<div class="topstrip">
+  <div class="wrap mono">
+    <span>Sunshine Built — Licensed Builder</span>
+    <span class="ts-licence">QBCC 15205110</span>
+    <span>Noosa, QLD</span>
   </div>
-  <div class="nav-mobile" id="mob-nav">
-    <a href="index.html" class="active">Home</a>
-    <a href="services.html">Services</a>
-    <a href="about.html">About</a>
-    <a href="gallery.html">Gallery</a>
-    <a href="contact.html">Contact</a>
-    <a href="contact.html" class="btn btn-olive">Get a Free Quote</a>
-  </div>
-</nav>
+</div>
 
 <!-- ══ HERO ══ -->
-<section class="hero">
-  <div class="hero-bg">
-    <!-- HERO PHOTO: <img src="images/hero.jpg" alt="Sunshine Built — Noosa" /> -->
-  </div>
-  <div class="hero-content">
-    <span class="eyebrow">Noosa &amp; Sunshine Coast</span>
-    <h1>Built with <em>precision.</em><br>Built to last.</h1>
-    <p class="hero-sub">Licensed builders with 20+ years of experience across the Sunshine Coast. From new homes to custom saunas.</p>
+<header class="hero">
+  <div class="wrap">
+    <img class="hero-logo" src="images/sb-logo-white.png" alt="Sunshine Built" width="600" height="281" />
+
+    <div class="dim">
+      <span class="dim-tick"></span>
+      <span class="dim-line"></span>
+      <span class="dim-label mono">Noosa &amp; the Sunshine Coast</span>
+      <span class="dim-line"></span>
+      <span class="dim-tick"></span>
+    </div>
+
+    <h1>A builder who's <em>on site</em> every day.</h1>
+
+    <p class="hero-sub">Sunshine Built is a licensed building company based in Noosa. Twenty years on the tools, a small team, and one point of contact from first quote to handover.</p>
+
     <div class="hero-ctas">
-      <a href="contact.html" class="btn btn-olive btn-lg">Get a Free Quote</a>
-      <a href="services.html" class="btn btn-outline-white btn-lg">Our Services</a>
+      <a class="btn btn-solid" href="tel:0401744844">Call 0401 744 844</a>
+      <a class="btn btn-ghost" href="mailto:info@sunshinebuilt.com.au">Email us</a>
     </div>
   </div>
-  <div class="hero-scroll">
-    <div class="hero-scroll-line"></div>
-    <span>Scroll</span>
-  </div>
-</section>
+</header>
 
-<!-- ══ SERVICES ══ -->
-<section class="section">
-  <div class="section-inner">
-    <span class="eyebrow">What We Build</span>
-    <ul class="services-list">
-      <li onclick="window.location='services.html#new-homes'">
-        <span class="service-num">01</span>
-        <span class="service-name">New Home Construction</span>
-        <span class="service-desc">Custom builds from slab to handover, working with your architect or ours.</span>
-        <span class="service-arrow">→</span>
-      </li>
-      <li onclick="window.location='services.html#renovations'">
-        <span class="service-num">02</span>
-        <span class="service-name">Renovations &amp; Extensions</span>
-        <span class="service-desc">Kitchen, bathroom, room additions and full property transformations.</span>
-        <span class="service-arrow">→</span>
-      </li>
-      <li onclick="window.location='services.html#insurance'">
-        <span class="service-num">03</span>
-        <span class="service-name">Insurance Repairs</span>
-        <span class="service-desc">Storm, fire and water damage. We liaise directly with your insurer.</span>
-        <span class="service-arrow">→</span>
-      </li>
-      <li onclick="window.location='services.html#fitouts'">
-        <span class="service-num">04</span>
-        <span class="service-name">Shop Fit-Outs</span>
-        <span class="service-desc">Commercial fit-outs built on time, on budget, and on brief.</span>
-        <span class="service-arrow">→</span>
-      </li>
-      <li onclick="window.location='services.html#carpentry'">
-        <span class="service-num">05</span>
-        <span class="service-name">Carpentry &amp; Decks</span>
-        <span class="service-desc">Decks, pergolas, custom joinery and precision finish carpentry.</span>
-        <span class="service-arrow">→</span>
-      </li>
-      <li onclick="window.location='services.html#saunas'">
-        <span class="service-num">06</span>
-        <span class="service-name">Custom Saunas</span>
-        <span class="service-desc">Bespoke indoor and outdoor saunas built with sustainably sourced timber.</span>
-        <span class="service-arrow">→</span>
-      </li>
-    </ul>
-    <div style="margin-top:2.5rem">
-      <a href="services.html" class="btn btn-outline">View All Services</a>
+<div class="scale" aria-hidden="true"></div>
+
+<!-- ══ WHAT WE BUILD ══ -->
+<section class="band band-paper" aria-labelledby="build-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">What we build</span>
+      <span class="sec-rule"></span>
     </div>
-  </div>
-</section>
+    <h2 id="build-h" style="max-width:22ch;margin-bottom:2rem">Residential and commercial work across the Coast.</h2>
 
-<!-- ══ FEATURED PROJECT ══ -->
-<div class="featured-project">
-  <div class="featured-project-img">
-    <!-- PHOTO: <img src="images/featured.jpg" alt="Featured project" /> -->
-  </div>
-  <div class="featured-project-caption">
-    <div>
-      <p class="fp-label">Featured Project</p>
-      <p class="fp-title">Custom Home — Noosaville</p>
-    </div>
-    <a href="gallery.html" class="btn btn-outline-white">View Gallery</a>
-  </div>
-</div>
-
-<!-- ══ ABOUT ══ -->
-<section class="section" style="background:var(--cream)">
-  <div class="section-inner">
-    <div class="about-grid">
-      <div class="about-photo-wrap photo-placeholder">
-        <!-- PHOTO: <img src="images/about.jpg" alt="Mitch — Sunshine Built" /> -->
+    <div class="svc">
+      <div>
+        <span class="mono">New homes</span>
+        <h3>New home construction</h3>
+        <p>Custom builds from slab to handover, working to your plans or with our team to develop them.</p>
       </div>
       <div>
-        <span class="eyebrow">About Sunshine Built</span>
-        <p class="about-statement">A builder who is on site every day — not one who disappears once the contract is signed.</p>
-        <p class="about-body">Over 20 years building across the Noosa region. Small team, high standards. When you hire Sunshine Built you deal directly with the builder throughout — one point of contact, one standard of quality.</p>
-        <p class="about-body">QBCC licensed and fully insured on every project.</p>
-        <a href="about.html" class="btn btn-outline">More About Us</a>
+        <span class="mono">Renovations</span>
+        <h3>Renovations &amp; extensions</h3>
+        <p>Kitchens, bathrooms, room additions and full property transformations.</p>
+      </div>
+      <div>
+        <span class="mono">Insurance</span>
+        <h3>Insurance repairs</h3>
+        <p>Storm, fire and water damage. We deal with your insurer directly so you don't have to.</p>
+      </div>
+      <div>
+        <span class="mono">Commercial</span>
+        <h3>Shop fit-outs</h3>
+        <p>Commercial fit-outs delivered on time, on budget and on brief.</p>
+      </div>
+      <div>
+        <span class="mono">Carpentry</span>
+        <h3>Carpentry &amp; decks</h3>
+        <p>Decks, pergolas, custom joinery and precision finish carpentry.</p>
+      </div>
+      <div>
+        <span class="mono">Saunas</span>
+        <h3>Custom saunas</h3>
+        <p>Bespoke indoor and outdoor saunas built in sustainably sourced timber.</p>
       </div>
     </div>
   </div>
 </section>
 
-<!-- ══ GALLERY STRIP ══ -->
-<section class="section">
-  <div class="section-inner">
-    <span class="eyebrow">Our Work</span>
-    <div class="gallery-strip-grid" style="margin-bottom:2rem">
-      <div class="photo-placeholder"><!-- PHOTO --></div>
-      <div class="photo-placeholder"><!-- PHOTO --></div>
-      <div class="photo-placeholder"><!-- PHOTO --></div>
-      <div class="photo-placeholder"><!-- PHOTO --></div>
-      <div class="photo-placeholder"><!-- PHOTO --></div>
+<!-- ══ ABOUT ══ -->
+<section class="band" aria-labelledby="about-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Who we are</span>
+      <span class="sec-rule"></span>
     </div>
-    <a href="gallery.html" class="btn btn-outline">View All Projects</a>
-  </div>
-</section>
 
-<!-- ══ TESTIMONIAL ══ -->
-<section class="section" style="background:var(--charcoal)">
-  <div class="section-inner">
-    <div class="testi-single">
-      <p class="testi-quote">"Mitch and the team renovated our kitchen and bathroom. The attention to detail was incredible — everything was done exactly as discussed, on time, and the finish is outstanding."</p>
-      <p class="testi-cite"><strong>Sarah R.</strong> — Noosaville</p>
-    </div>
-  </div>
-</section>
+    <div class="about-grid">
+      <div>
+        <p class="about-lead" id="about-h">Small team, high standards, and a builder you can actually get on the phone.</p>
+        <p class="about-body">Sunshine Built has been working across the Noosa region for over twenty years. We keep the team small on purpose — it means the person quoting your job is the person running it, and you're not handed off to a project manager once the contract is signed.</p>
+        <p class="about-body">Every project is QBCC licensed and fully insured. If you're weighing up a build, a renovation or an insurance repair, pick up the phone and we'll talk it through honestly — including when the answer is that we're not the right fit.</p>
+      </div>
 
-<!-- ══ CREDENTIALS ══ -->
-<section class="section-sm section" style="background:var(--cream)">
-  <div class="section-inner">
-    <div class="creds-row">
-      <div class="cred"><strong>QBCC #15205110</strong>Licensed Builder</div>
-      <div class="cred"><strong>20+ Years</strong>Experience</div>
-      <div class="cred"><strong>Fully Insured</strong>Every Project</div>
-      <div class="cred"><strong>Noosa, QLD</strong>Based Locally</div>
-      <div class="cred"><strong>Free Quotes</strong>No Obligation</div>
+      <dl class="facts">
+        <div><dt>QBCC licence</dt><dd>15205110</dd></div>
+        <div><dt>Experience</dt><dd>20+ years</dd></div>
+        <div><dt>Insurance</dt><dd>Fully insured</dd></div>
+        <div><dt>Based in</dt><dd>Noosa, QLD</dd></div>
+        <div><dt>Quotes</dt><dd>Free, no obligation</dd></div>
+      </dl>
     </div>
   </div>
 </section>
 
-<!-- ══ CTA ══ -->
-<div class="cta-block">
-  <h2>Start a conversation.</h2>
-  <p>Tell us what you're building. Free quote, no obligation.</p>
-  <div class="cta-block-btns">
-    <a href="contact.html" class="btn btn-olive btn-lg">Get a Free Quote</a>
-    <a href="tel:0401744844" class="btn btn-outline-white btn-lg">0401 744 844</a>
+<!-- ══ TITLE BLOCK — CONTACT ══ -->
+<section class="band band-paper" aria-labelledby="contact-h">
+  <div class="wrap">
+    <div class="sec-head">
+      <span class="mono">Get in touch</span>
+      <span class="sec-rule"></span>
+    </div>
+    <h2 id="contact-h" style="max-width:24ch;margin-bottom:2rem">Tell us what you're building.</h2>
+
+    <div class="tb">
+      <div class="tb-head mono">
+        <span class="tb-h-title">Sunshine Built</span>
+        <span>Licensed Builder</span>
+        <span>Noosa &amp; Sunshine Coast, QLD</span>
+      </div>
+
+      <div class="tb-grid">
+        <div class="tb-cell">
+          <span class="mono">Licence</span>
+          <p class="tb-val">QBCC 15205110<small>Licensed &amp; fully insured</small></p>
+        </div>
+        <div class="tb-cell">
+          <span class="mono">Service area</span>
+          <p class="tb-val">Noosa &amp; the Sunshine Coast<small>Queensland</small></p>
+        </div>
+        <div class="tb-cell">
+          <span class="mono">Quotes</span>
+          <p class="tb-val">Free, no obligation<small>Site visits by arrangement</small></p>
+        </div>
+      </div>
+
+      <div class="tb-contact">
+        <a href="tel:0401744844">
+          <span class="mono">Phone</span>
+          <span class="tb-big">0401 744 844</span>
+        </a>
+        <a href="mailto:info@sunshinebuilt.com.au">
+          <span class="mono">Email</span>
+          <span class="tb-big">info@sunshinebuilt.com.au</span>
+        </a>
+      </div>
+    </div>
   </div>
-</div>
+</section>
 
 <!-- ══ FOOTER ══ -->
-<footer class="site-footer">
-  <div class="footer-inner">
-    <div class="footer-logo">
-      <img src="images/logo.png" alt="Sunshine Built" />
-    </div>
-    <ul class="footer-nav">
-      <li><a href="index.html">Home</a></li>
-      <li><a href="services.html">Services</a></li>
-      <li><a href="about.html">About</a></li>
-      <li><a href="gallery.html">Gallery</a></li>
-      <li><a href="contact.html">Contact</a></li>
-    </ul>
-    <div class="footer-contact">
-      <p><a href="tel:0401744844">0401 744 844</a></p>
-      <p><a href="mailto:info@sunshinebuilt.com.au">info@sunshinebuilt.com.au</a></p>
-      <p>Noosa, QLD</p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <span>© 2026 Sunshine Built. QBCC #15205110.</span>
-    <a href="#" style="color:rgba(255,255,255,.15)">Back to top ↑</a>
+<footer class="foot">
+  <div class="wrap">
+    <img src="images/sb-logo-white.png" alt="Sunshine Built" width="600" height="281" />
+    <span class="mono">© 2026 Sunshine Built · QBCC 15205110</span>
+    <span class="mono"><a href="tel:0401744844">0401 744 844</a></span>
   </div>
 </footer>
 
-<script>
-  var nav = document.getElementById('site-nav');
-  window.addEventListener('scroll', function () {
-    nav.classList.toggle('scrolled', window.scrollY > 60);
-  });
-</script>
+<a class="callbar" href="tel:0401744844">Call Mitch — 0401 744 844</a>
 
 </body>
 </html>
