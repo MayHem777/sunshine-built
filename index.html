@@ -34,7 +34,7 @@
 <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600;700&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet" />
 
 <script type="application/ld+json">
-{"@context": "https://schema.org", "@type": "GeneralContractor", "@id": "https://www.sunshinebuilt.com.au/#business", "name": "Sunshine Built", "url": "https://www.sunshinebuilt.com.au/", "logo": "https://www.sunshinebuilt.com.au/images/sb-logo-olive.png", "image": "https://www.sunshinebuilt.com.au/images/sb-logo-olive.png", "telephone": "+61401744844", "email": "info@sunshinebuilt.com.au", "address": {"@type": "PostalAddress", "addressLocality": "Noosa", "addressRegion": "QLD", "addressCountry": "AU"}, "areaServed": [{"@type": "City", "name": "Noosa"}, {"@type": "Place", "name": "Sunshine Coast"}, {"@type": "State", "name": "Queensland"}], "hasCredential": "QBCC Licence 15205110", "taxID": "ABN 40 270 427 080", "knowsAbout": ["New home construction", "Renovations & extensions", "Insurance repairs", "Shop fit-outs", "Carpentry & decks", "Custom saunas"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Building services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "New home construction", "description": "Custom builds from slab to handover."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Renovations & extensions", "description": "Kitchens, bathrooms, room additions and full property transformations."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Insurance repairs", "description": "Storm, fire and water damage, dealing directly with your insurer."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Shop fit-outs", "description": "Commercial fit-outs delivered on time, on budget and on brief."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Carpentry & decks", "description": "Decks, pergolas, custom joinery and precision finish carpentry."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom saunas", "description": "Bespoke indoor and outdoor saunas in sustainably sourced timber."}}]}, "description": "Established building company in Noosa delivering new homes, major renovations and extensions, insurance reinstatement, commercial fit-outs, carpentry and custom saunas across the Sunshine Coast."}
+{"@context": "https://schema.org", "@type": "GeneralContractor", "@id": "https://www.sunshinebuilt.com.au/#business", "name": "Sunshine Built", "legalName": "M.J. Croft Pty Ltd ATF The Croft Trust", "url": "https://www.sunshinebuilt.com.au/", "logo": "https://www.sunshinebuilt.com.au/images/sb-logo-olive.png", "image": "https://www.sunshinebuilt.com.au/images/sb-logo-olive.png", "telephone": "+61401744844", "email": "info@sunshinebuilt.com.au", "address": {"@type": "PostalAddress", "addressLocality": "Noosa", "addressRegion": "QLD", "addressCountry": "AU"}, "areaServed": [{"@type": "City", "name": "Noosa"}, {"@type": "Place", "name": "Sunshine Coast"}, {"@type": "State", "name": "Queensland"}], "hasCredential": "QBCC Licence 15205110", "taxID": "ABN 40 270 427 080", "knowsAbout": ["New home construction", "Renovations & extensions", "Insurance repairs", "Shop fit-outs", "Carpentry & decks", "Custom saunas"], "hasOfferCatalog": {"@type": "OfferCatalog", "name": "Building services", "itemListElement": [{"@type": "Offer", "itemOffered": {"@type": "Service", "name": "New home construction", "description": "Custom builds from slab to handover."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Renovations & extensions", "description": "Kitchens, bathrooms, room additions and full property transformations."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Insurance repairs", "description": "Storm, fire and water damage, dealing directly with your insurer."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Shop fit-outs", "description": "Commercial fit-outs delivered on time, on budget and on brief."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Carpentry & decks", "description": "Decks, pergolas, custom joinery and precision finish carpentry."}}, {"@type": "Offer", "itemOffered": {"@type": "Service", "name": "Custom saunas", "description": "Bespoke indoor and outdoor saunas in sustainably sourced timber."}}]}, "description": "Established building company in Noosa delivering new homes, major renovations and extensions, insurance reinstatement, commercial fit-outs, carpentry and custom saunas across the Sunshine Coast."}
 </script>
 
 <script type="application/ld+json">
@@ -96,6 +96,7 @@ a{color:inherit;text-decoration:none}
   padding-block:.7rem;
 }
 .topstrip span{white-space:nowrap}
+@media(max-width:559px){.topstrip span{white-space:normal}}
 .topstrip .ts-licence{color:#b9bf7e}
 
 /* ═══ HERO ═══ */
@@ -168,6 +169,13 @@ h1 em{font-style:normal;color:#b9bf7e}
 .btn-solid:hover{background:#767c42}
 .btn-ghost{border-color:rgba(244,239,229,.32);color:var(--paper)}
 .btn-ghost:hover{border-color:var(--paper);background:rgba(244,239,229,.08)}
+
+.hero-licence{
+  margin-top:1.6rem;max-width:62ch;
+  font-size:.95rem;line-height:1.5;
+  color:rgba(244,239,229,.88);
+}
+.hero-licence strong{color:var(--paper);font-weight:600}
 
 /* ═══ SCALE RULE DIVIDER ═══ */
 .scale{height:16px;background:var(--paper);border-bottom:1px solid var(--rule);position:relative}
@@ -326,6 +334,7 @@ h2{
 .foot{background:var(--ink);color:rgba(244,239,229,.55);padding-block:2.25rem}
 .foot .wrap{display:flex;flex-wrap:wrap;gap:1rem 2rem;align-items:center;justify-content:space-between}
 .foot img{width:150px;opacity:.9}
+.foot-licence{font-size:.9rem;line-height:1.5;color:rgba(244,239,229,.82);max-width:60ch}
 .foot a:hover{color:var(--paper)}
 
 /* ═══ MOBILE STICKY CALL ═══ */
@@ -354,8 +363,8 @@ h2{
 <!-- ══ TOP STRIP ══ -->
 <div class="topstrip">
   <div class="wrap mono">
-    <span>Sunshine Built — Licensed Builder</span>
-    <span class="ts-licence">QBCC 15205110</span>
+    <span>Licensee: M.J. Croft Pty Ltd ATF The Croft Trust</span>
+    <span class="ts-licence">QBCC licence 15205110</span>
     <span>Noosa, QLD</span>
   </div>
 </div>
@@ -381,6 +390,8 @@ h2{
       <a class="btn btn-solid" href="tel:0401744844">Call 0401 744 844</a>
       <a class="btn btn-ghost" href="mailto:info@sunshinebuilt.com.au">Email us</a>
     </div>
+
+    <p class="hero-licence">Sunshine Built is a trading name of <strong>M.J. Croft Pty Ltd ATF The Croft Trust</strong> · QBCC licence <strong>15205110</strong> · ABN 40&nbsp;270&nbsp;427&nbsp;080 · Noosaville QLD</p>
   </div>
 </header>
 
@@ -551,7 +562,7 @@ h2{
 <footer class="foot">
   <div class="wrap">
     <img src="images/sb-logo-white.png" alt="Sunshine Built" loading="lazy" width="600" height="281" />
-    <span class="mono">© 2026 Sunshine Built · QBCC 15205110 · ABN 40&nbsp;270&nbsp;427&nbsp;080</span>
+    <span class="foot-licence">© 2026 Sunshine Built, a trading name of M.J. Croft Pty Ltd ATF The Croft Trust · QBCC licence 15205110 · ABN 40&nbsp;270&nbsp;427&nbsp;080</span>
     <span class="mono"><a href="tel:0401744844">0401 744 844</a></span>
   </div>
 </footer>

@@ -1,0 +1,16 @@
+{
+  "name": "sunshine-built",
+  "description": "Sunshine Built website, single page on GitHub Pages",
+  "health_url": "https://www.sunshinebuilt.com.au/",
+  "urls": ["https://www.sunshinebuilt.com.au/"],
+  "public_urls": ["https://www.sunshinebuilt.com.au/", "https://sunshinebuilt.com.au/", "https://*.sunshine-built-preview.pages.dev/"],
+  "public_repo": true,
+  "access": "public",
+  "cloudflare": {"workers": [], "pages": ["sunshine-built-preview"]},
+  "cron": [],
+  "systemd": [],
+  "heartbeats": {},
+  "secrets": [],
+  "credentials": [],
+  "notes": "Public marketing site. Live = GitHub Pages from master (push deploys). sunshine-built-preview is a direct-upload Pages project for branch previews only (noindex). DNS at VentraIP (nameserver.net.au)."
+}
