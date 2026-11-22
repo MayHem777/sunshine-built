@@ -1,0 +1,6 @@
+---
+// Visible placeholder for something only Mitch can supply. The check script lists every one.
+interface Props { inline?: boolean }
+const { inline = false } = Astro.props;
+---
+{inline ? <span class="todo">[MITCH: <slot />]</span> : <p class="todo">[MITCH: <slot />]</p>}

@@ -1,0 +1,26 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+import Todo from '../../components/Todo.astro';
+---
+<ServicePage title="Shop fit-outs" heading="Shop and commercial fit-outs"
+  description="Retail and commercial fit-outs in Noosa and the Sunshine Coast by a QBCC licensed builder."
+  intro="Retail and commercial fit-outs: walls and partitions, counters and joinery, ceilings and the finishing work that makes a space ready to trade."
+  trades={['Fit-outs']}
+  cta="Fitting out a shop or office? Send us the plans or tell us what you need.">
+  <h2>What we do</h2>
+  <ul>
+    <li>Shop fit-outs</li>
+    <li>Partition walls and ceilings</li>
+    <li>Counters, shelving and joinery</li>
+    <li>Make-good work at the end of a lease</li>
+  </ul>
+  <h2>How a job runs</h2>
+  <ol class="steps">
+    <li><strong>Plans and site visit.</strong> We look at the tenancy and your plans, or help you work out what you need.</li>
+    <li><strong>Scope and quote.</strong> A written scope and quote, including what the landlord or centre requires.</li>
+    <li><strong>Program.</strong> We agree a start date, the order of work and when the space needs to be ready.</li>
+    <li><strong>Build and handover.</strong> We run the trades and hand the space over ready to fit with stock and furniture.</li>
+  </ol>
+  <Todo>check the fit-out list and steps match the work you take on (e.g. do we do make-good work?)</Todo>
+  <Todo slot="no-photos">finished fit-out photos go here, with the client’s OK</Todo>
+</ServicePage>

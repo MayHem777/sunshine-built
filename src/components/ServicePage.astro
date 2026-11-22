@@ -1,0 +1,38 @@
+---
+import Base from '../layouts/Base.astro';
+import Gallery from './Gallery.astro';
+import QuoteCta from './QuoteCta.astro';
+import { SITE } from '../site';
+interface Props { title: string; heading: string; description: string; intro: string; trades?: string[]; noindex?: boolean; cta?: string }
+const { title, heading, description, intro, trades, noindex = false, cta } = Astro.props;
+const service = {
+  '@context': 'https://schema.org',
+  '@type': 'Service',
+  name: title,
+  serviceType: title,
+  description,
+  provider: { '@id': `${SITE.url}/#business` },
+  areaServed: [{ '@type': 'Place', name: 'Noosa' }, { '@type': 'Place', name: 'Sunshine Coast' }],
+};
+---
+<Base title={`${title}, Noosa & Sunshine Coast`} description={description} noindex={noindex} schema={noindex ? [] : [service]}>
+  <section class="hero page-hero">
+    <div class="wrap">
+      <span class="mono eyebrow"><a href="/services/" style="color:inherit">Services</a> / {title}</span>
+      <h1>{heading}</h1>
+      <p class="sub">{intro}</p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="prose"><slot /></div>
+      {trades && (
+        <>
+          <h2 style="margin-top:2.5rem">Photos</h2>
+          <Gallery trades={trades}><slot name="no-photos" slot="empty" /></Gallery>
+        </>
+      )}
+      <QuoteCta text={cta} />
+    </div>
+  </section>
+</Base>

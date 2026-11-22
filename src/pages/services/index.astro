@@ -1,0 +1,29 @@
+---
+import Base from '../../layouts/Base.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
+import Todo from '../../components/Todo.astro';
+import { SERVICES } from '../../site';
+---
+<Base title="Building services, Noosa & Sunshine Coast" description="Renovations and extensions, insurance repairs, shop fit-outs, carpentry and decks, and custom cedar saunas across Noosa and the Sunshine Coast.">
+  <section class="hero page-hero">
+    <div class="wrap">
+      <span class="mono eyebrow">Services</span>
+      <h1>What we build</h1>
+      <p class="sub">We work across Noosa and the Sunshine Coast. Pick the kind of job for more detail, or just get in touch and tell us what you need.</p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="grid">
+        {SERVICES.map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3>
+            <p>{s.short}</p>
+            {'stub' in s && <Todo inline>confirm we’re offering this</Todo>}
+          </a>
+        ))}
+      </div>
+      <QuoteCta />
+    </div>
+  </section>
+</Base>

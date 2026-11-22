@@ -1,0 +1,25 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+import Todo from '../../components/Todo.astro';
+---
+<ServicePage title="Saunas" heading="Custom cedar saunas"
+  description="Custom cedar saunas designed and built in Noosa and the Sunshine Coast, indoor or outdoor."
+  intro="Custom cedar saunas we design and build to suit the space, inside the house or outdoors."
+  trades={['Saunas']}
+  cta="Thinking about a sauna? Tell us where it would go and how many people it needs to fit.">
+  <h2>What we do</h2>
+  <ul>
+    <li>Design the sauna around your space and how you'll use it</li>
+    <li>Build it in cedar: framing, lining, benches, door and trims</li>
+    <li>Indoor saunas in an existing room, or outdoor saunas as their own building</li>
+  </ul>
+  <h2>How a job runs</h2>
+  <ol class="steps">
+    <li><strong>Site visit.</strong> We look at where the sauna would go and talk about size, layout and heater.</li>
+    <li><strong>Design and quote.</strong> You get a layout and a quote.</li>
+    <li><strong>Build.</strong> We build the sauna and organise the electrician for the heater.</li>
+    <li><strong>Handover.</strong> We show you how everything works.</li>
+  </ol>
+  <Todo>confirm: heater supply and electrician arranged by us? Any heater types or brands you want named?</Todo>
+  <Todo slot="no-photos">sauna photos go here once the NAS photos are copied in</Todo>
+</ServicePage>

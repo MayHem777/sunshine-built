@@ -1,0 +1,65 @@
+# Decap CMS: lets Nat add case studies and gallery photos.
+# Every edit is a draft in the editorial workflow; nothing goes live until Mitch publishes it.
+# Sign-in goes through the existing GitHub OAuth Worker (sth-oauth). Nat needs a GitHub account with write access to this repo.
+backend:
+  name: github
+  repo: MayHem777/sunshine-built
+  branch: master
+  base_url: https://sth-oauth.mitchjcroft.workers.dev
+
+publish_mode: editorial_workflow
+site_url: https://www.sunshinebuilt.com.au
+display_url: https://www.sunshinebuilt.com.au
+locale: en
+
+# Fallback upload folder (each collection below sets its own, so Astro can optimise the photos)
+media_folder: src/assets/uploads
+public_folder: ../../assets/uploads
+
+collections:
+  - name: work
+    label: "Case studies"
+    label_singular: "Case study"
+    folder: src/content/work
+    create: true
+    slug: "{{slug}}"
+    media_folder: /src/assets/work
+    public_folder: ../../assets/work
+    summary: "{{title}} ({{jobType}}, {{area}}) {{draft}}"
+    fields:
+      - { label: "Title", name: title, widget: string, hint: "e.g. Extension and renovation, Ninderry. Never a street name or client name." }
+      - { label: "One-line summary", name: summary, widget: string }
+      - { label: "Type of job", name: jobType, widget: select, options: ["Extension & renovation", "Renovation", "Bathroom", "Kitchen", "Insurance repair", "Shop fit-out", "Carpentry & decks", "Sauna", "Other"] }
+      - { label: "Area (suburb or region only)", name: area, widget: string, hint: "No street names or house numbers." }
+      - { label: "Year finished", name: year, widget: number, value_type: int, required: false }
+      - { label: "Draft: hidden from the website", name: draft, widget: boolean, default: true, hint: "Leave ON until the client has said yes to publishing. Turn OFF to show it." }
+      - { label: "Sort order (lower shows first)", name: order, widget: number, value_type: int, default: 99 }
+      - { label: "Cover photo", name: cover, widget: image, required: false, hint: "No people, number plates, house numbers or street views." }
+      - { label: "Cover photo description (for screen readers)", name: coverAlt, widget: string, required: false }
+      - label: "Photos"
+        name: photos
+        widget: list
+        required: false
+        fields:
+          - { label: "Photo", name: image, widget: image }
+          - { label: "Description (for screen readers)", name: alt, widget: string }
+          - { label: "Caption", name: caption, widget: string, required: false }
+      - { label: "Write-up", name: body, widget: markdown, hint: "Plain words. No client names, street address or dollar figures." }
+
+  - name: gallery
+    label: "Gallery photos"
+    label_singular: "Gallery photo"
+    folder: src/content/gallery
+    create: true
+    slug: "{{slug}}"
+    media_folder: /src/assets/gallery
+    public_folder: ../../assets/gallery
+    summary: "{{caption}} ({{trade}})"
+    fields:
+      - { label: "Photo", name: image, widget: image, hint: "No people, number plates, house numbers or street views." }
+      - { label: "Caption", name: caption, widget: string, hint: "Short and true, about the trade: e.g. 'Hardwood deck and stairs'. Never a suburb, address or client name. Only call it a renovation if it was one." }
+      - { label: "Description (for screen readers)", name: alt, widget: string }
+      - { label: "Trade", name: trade, widget: select, options: ["Bathrooms & ensuites", "Kitchens & joinery", "Carpentry & decks", "Saunas", "Extensions & renovations", "Fit-outs", "Other"] }
+      - { label: "Hidden from the website", name: hidden, widget: boolean, default: false, hint: "Turn ON to keep a photo off the site (e.g. waiting on the homeowner's OK)." }
+      - { label: "Sort order (lower shows first)", name: order, widget: number, value_type: int, default: 99 }
+      - { label: "Notes (not shown on the site)", name: body, widget: text, required: false }

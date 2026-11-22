@@ -1,0 +1,17 @@
+# Old Squarespace pages (seen in the Wayback Machine, 2024-2025)
+/home              /                  301
+/about-us          /about/            301
+/gallery           /our-work/         301
+/cart              /                  301
+/float-house       /our-work/         301
+/cultural-center   /our-work/         301
+/greenspacing      /our-work/         301
+# Old one-page site and the never-deployed multi-page draft
+/index.html        /                  301
+/about.html        /about/            301
+/services.html     /services/         301
+/gallery.html      /our-work/         301
+/contact.html      /contact/          301
+/thank-you.html    /contact/thank-you/ 301
+# Old sitemap name
+/sitemap.xml       /sitemap-index.xml 301

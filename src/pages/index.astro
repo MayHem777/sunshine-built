@@ -1,0 +1,84 @@
+---
+import Base from '../layouts/Base.astro';
+import Gallery from '../components/Gallery.astro';
+import Todo from '../components/Todo.astro';
+import { SITE, SERVICES } from '../site';
+
+const faqs = [
+  { q: 'Are you licensed and insured?', a: `Yes. ${SITE.name} is a trading name of ${SITE.legalName}, which holds ${SITE.licence} (${SITE.licenceClass}). We are insured.` },
+  { q: 'What areas do you work in?', a: `We are based in ${SITE.locality} and work across ${SITE.serviceArea}.` },
+  { q: 'What kind of work do you take on?', a: 'Renovations and extensions, insurance repairs, shop fit-outs, carpentry and decks, and custom cedar saunas.' },
+  { q: 'Do you handle insurance repair work?', a: 'Yes. We make the home safe, inspect and document the damage, put together a scope of works and work with your insurer’s assessor on it before the repairs start.' },
+  { q: 'How much does a quote cost?', a: `Quotes are free. Call ${SITE.phone} or send us the details and we’ll scope the job properly before anyone talks numbers.` },
+];
+const faqSchema = {
+  '@context': 'https://schema.org',
+  '@type': 'FAQPage',
+  mainEntity: faqs.map((f) => ({ '@type': 'Question', name: f.q, acceptedAnswer: { '@type': 'Answer', text: f.a } })),
+};
+---
+<Base title="Licensed Builder, Noosa & Sunshine Coast | Sunshine Built"
+  description={`QBCC licensed builder in Noosa, on the tools since 2004. Renovations, extensions, insurance repairs, shop fit-outs, carpentry, decks and saunas. Call ${SITE.phone}.`}
+  schema={[faqSchema]}>
+  <section class="hero">
+    <div class="wrap">
+      <span class="mono eyebrow">Licensed builder · Noosa &amp; the Sunshine Coast</span>
+      <h1>On the tools <em>since 2004</em>.</h1>
+      <p class="sub">Sunshine Built is a Noosa building company. We take on renovations and extensions, insurance repairs, shop fit-outs, carpentry and decks, and custom cedar saunas across Noosa and the Sunshine Coast. {SITE.insurance}.</p>
+      <div class="ctas">
+        <a class="btn btn-solid" href="/contact/">Get a quote</a>
+        <a class="btn btn-ghost" href={SITE.phoneHref}>Call {SITE.phone}</a>
+      </div>
+    </div>
+  </section>
+
+  <section class="band band-paper" id="build-h" aria-labelledby="svc-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="mono">What we build</span><span class="rule"></span></div>
+      <h2 id="svc-h">Building work we take on</h2>
+      <div class="grid">
+        {SERVICES.filter((s) => !('stub' in s)).map((s) => (
+          <a class="card" href={`/services/${s.slug}/`}>
+            <h3>{s.name}</h3>
+            <p>{s.short}</p>
+          </a>
+        ))}
+      </div>
+      <a class="sister" href="https://www.sunshinetinyhouses.com.au/" rel="noopener">
+        <span class="mono" style="color:var(--olive)">Sister company</span>
+        <span style="display:block;font-weight:600;margin:.35rem 0">Modular granny flats, secondary dwellings and tiny homes</span>
+        <span class="muted" style="display:block">Built off site in Noosaville by Sunshine Tiny Houses (sunshinetinyhouses.com.au). Building on site? That stays with us.</span>
+      </a>
+    </div>
+  </section>
+
+  <section class="band" aria-labelledby="finish-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="mono">Our work</span><span class="rule"></span></div>
+      <h2 id="finish-h">Our standard of finish</h2>
+      <Gallery limit={6}>
+        <Todo slot="empty">job photos go here. The photo zip on the NAS couldn’t be reached from Claudio (see the build notes)</Todo>
+      </Gallery>
+      <p style="margin-top:1.5rem"><a class="btn btn-line" href="/our-work/">See more of our work</a></p>
+    </div>
+  </section>
+
+  <section class="band band-paper" id="faq-h" aria-labelledby="faq-title">
+    <div class="wrap">
+      <div class="sec-head"><span class="mono">Common questions</span><span class="rule"></span></div>
+      <h2 id="faq-title">Before you call</h2>
+      <div class="faq">
+        {faqs.map((f) => <details><summary>{f.q}</summary><p>{f.a}</p></details>)}
+      </div>
+      <div class="cta-box"><p>Got a job in mind? Tell us about it.</p><a class="btn btn-solid" href="/contact/">Get a quote</a></div>
+    </div>
+  </section>
+
+  <script is:inline>
+    // Old one-page anchors (#about-h, #contact-h) now live on their own pages.
+    (function () {
+      var m = { '#about-h': '/about/', '#contact-h': '/contact/' };
+      if (m[location.hash]) location.replace(m[location.hash]);
+    })();
+  </script>
+</Base>

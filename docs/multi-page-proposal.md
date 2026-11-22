@@ -68,6 +68,7 @@ Recommended: **move the domain's nameservers from VentraIP to Cloudflare (free p
 5. At VIPControl, change the nameservers to the two Cloudflare ones. (Hard stop: Mitch's OK on the day.)
 6. Once Cloudflare shows the zone active: check `https://www.` and the apex load the new site with a valid certificate, every redirect, the form end to end (a real test enquiry lands in info@), and that mail still flows in both directions (send a test email in and out).
 7. Remove the `CNAME` file / switch off GitHub Pages for this repo only after the new site is serving.
+   **Merge order:** `astro-rebuild` moves the one-pager into `legacy/`, so merging it into `master` while GitHub Pages still serves the domain would break the live site. Point the domain at Cloudflare Pages first (steps 3–6, with Cloudflare Pages building `astro-rebuild` or a production branch), then merge, then switch GitHub Pages off.
 8. Search Console: submit the new sitemap.
 
 **Rollback:** change the nameservers back at VIPControl (the old records are untouched there), and GitHub Pages is still configured until step 7.

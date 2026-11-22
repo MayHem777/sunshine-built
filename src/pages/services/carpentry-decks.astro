@@ -1,0 +1,20 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+import Todo from '../../components/Todo.astro';
+---
+<ServicePage title="Carpentry & decks" heading="Carpentry and decks"
+  description="Decks, stairs, pergolas, screens and finish carpentry in Noosa and the Sunshine Coast by a QBCC licensed builder."
+  intro="Decks, stairs, pergolas, screens and finish carpentry, inside and out."
+  trades={['Carpentry & decks']}
+  cta="Need a deck, stairs or carpentry work? Tell us about it.">
+  <h2>What we do</h2>
+  <ul>
+    <li>Timber decks and stairs</li>
+    <li>Pergolas and covered outdoor areas</li>
+    <li>Screens, battens and cladding</li>
+    <li>Doors, trims and finish carpentry</li>
+    <li>Repairs to existing decks and stairs</li>
+  </ul>
+  <p>Larger decks and roofed structures can need building approval. We'll tell you at the site visit if yours does, and sort it out with a certifier as part of the job.</p>
+  <Todo slot="no-photos">deck and carpentry photos go here once the NAS photos are copied in</Todo>
+</ServicePage>

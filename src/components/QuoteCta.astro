@@ -1,0 +1,8 @@
+---
+interface Props { text?: string }
+const { text = 'Tell us about the job and we’ll come and have a look.' } = Astro.props;
+---
+<div class="cta-box">
+  <p>{text}</p>
+  <a class="btn btn-solid" href="/contact/">Get a quote</a>
+</div>

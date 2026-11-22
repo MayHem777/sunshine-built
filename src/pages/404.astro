@@ -1,0 +1,18 @@
+---
+import Base from '../layouts/Base.astro';
+import { SITE } from '../site';
+---
+<Base title="Page not found" description="That page isn't here." noindex>
+  <section class="hero page-hero">
+    <div class="wrap">
+      <span class="mono eyebrow">Error 404</span>
+      <h1>That page isn't here.</h1>
+      <p class="sub">The link may be out of date. Try the pages below, or call {SITE.phone}.</p>
+      <div class="ctas">
+        <a class="btn btn-solid" href="/">Home</a>
+        <a class="btn btn-ghost" href="/services/">Services</a>
+        <a class="btn btn-ghost" href="/contact/">Contact</a>
+      </div>
+    </div>
+  </section>
+</Base>

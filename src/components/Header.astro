@@ -1,0 +1,39 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/sb-logo-white.png';
+import LicenceLine from './LicenceLine.astro';
+import { SITE } from '../site';
+const links = [
+  { href: '/services/', label: 'Services' },
+  { href: '/our-work/', label: 'Our work' },
+  { href: '/about/', label: 'About' },
+  { href: '/contact/', label: 'Contact' },
+];
+const path = Astro.url.pathname;
+const current = (href: string) => (path === href || (href !== '/' && path.startsWith(href)) ? 'page' : undefined);
+---
+<div class="licbar">
+  <div class="wrap">
+    <LicenceLine />
+    <span>Noosa &amp; Sunshine Coast · <a href={SITE.phoneHref}>{SITE.phone}</a></span>
+  </div>
+</div>
+<header class="site-head">
+  <div class="wrap">
+    <a class="brand" href="/" aria-label={`${SITE.name} home`}>
+      <Image src={logo} alt={SITE.name} width={150} loading="eager" />
+    </a>
+    <nav class="nav" aria-label="Main">
+      {links.map((l) => <a href={l.href} aria-current={current(l.href)}>{l.label}</a>)}
+      <a class="btn btn-solid btn-sm" href="/contact/">Get a quote</a>
+    </nav>
+    <details class="menu">
+      <summary aria-label="Open menu">Menu</summary>
+      <nav class="menu-list" aria-label="Main (mobile)">
+        <a href="/">Home</a>
+        {links.map((l) => <a href={l.href} aria-current={current(l.href)}>{l.label}</a>)}
+        <a href="/contact/">Get a quote</a>
+      </nav>
+    </details>
+  </div>
+</header>

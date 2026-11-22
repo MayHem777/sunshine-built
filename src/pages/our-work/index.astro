@@ -1,0 +1,50 @@
+---
+import Base from '../../layouts/Base.astro';
+import Gallery from '../../components/Gallery.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
+import Todo from '../../components/Todo.astro';
+import { Picture } from 'astro:assets';
+import { getCollection } from 'astro:content';
+// draft case studies never reach the build
+const studies = (await getCollection('work', (e) => !e.data.draft)).sort((a, b) => a.data.order - b.data.order);
+---
+<Base title="Our work: case studies and photos" description="Case studies and photos of renovations, extensions, carpentry, decks, saunas and fit-outs by Sunshine Built in Noosa and the Sunshine Coast.">
+  <section class="hero page-hero">
+    <div class="wrap">
+      <span class="mono eyebrow">Our work</span>
+      <h1>Our work</h1>
+      <p class="sub">Real jobs and real photos. No stock images.</p>
+    </div>
+  </section>
+  <section class="band band-paper" aria-labelledby="cs-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="mono">Case studies</span><span class="rule"></span></div>
+      <h2 id="cs-h">Recent jobs</h2>
+      {studies.length === 0 ? (
+        <Todo>no case studies are published yet. Two are written as drafts in the CMS (Ninderry extension, Noosa retail fit-out) and are waiting on client permission and photos</Todo>
+      ) : (
+        <div class="grid">
+          {studies.map((s) => (
+            <a class="card" href={`/our-work/${s.id}/`}>
+              {s.data.cover && <Picture src={s.data.cover} alt={s.data.coverAlt ?? s.data.title} formats={['avif', 'webp']} widths={[400, 800]} sizes="(max-width: 600px) 100vw, 360px" />}
+              <span class="mono">{s.data.jobType} · {s.data.area}</span>
+              <h3>{s.data.title}</h3>
+              <p>{s.data.summary}</p>
+            </a>
+          ))}
+        </div>
+      )}
+    </div>
+  </section>
+  <section class="band" aria-labelledby="finish-h">
+    <div class="wrap">
+      <div class="sec-head"><span class="mono">Gallery</span><span class="rule"></span></div>
+      <h2 id="finish-h">Our standard of finish</h2>
+      <p class="prose muted">Photos of our work, grouped by trade.</p>
+      <Gallery grouped>
+        <Todo slot="empty">gallery photos go here. The photo zip on the NAS couldn’t be reached from Claudio (see the build notes)</Todo>
+      </Gallery>
+      <QuoteCta />
+    </div>
+  </section>
+</Base>

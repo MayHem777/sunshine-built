@@ -22,19 +22,39 @@ Website for **www.sunshinebuilt.com.au**. Read this file and `PLAN.md` before ch
 4. **Never assume anyone's gender**; use names, roles or "they".
 5. **Workflow:** work on a feature branch, never on `master`/`main`. Publish a preview URL and show it to Mitch. Merge and deploy to production **only after Mitch approves in that session.** Never force-push.
 
-## How it is built and hosted today (checked 2026-11-22)
+## How it is built and hosted
 
-- Single page: `index.html` (inline CSS, schema.org JSON-LD), `404.html`, `robots.txt`, `sitemap.xml`, `images/`. No build step.
-- Hosted on **GitHub Pages**, legacy build from branch `master`, path `/`. `CNAME` = `www.sunshinebuilt.com.au`. HTTPS enforced; the GitHub certificate renews itself.
-- **Pushing to `master` deploys to the live site within a minute.** That is a hard stop: Mitch's OK first.
-- The repo is **public** (GitHub Pages on a free plan needs it).
-- DNS: nameservers `ns1-3.nameserver.net.au` (VentraIP, managed in VIPControl). Apex has the four GitHub Pages A records (185.199.108-111.153) and 301s to `www`; `www` is a CNAME to `mayhem777.github.io`. Mail: MX `sunshinebuilt-com-au.mail.protection.outlook.com`, SPF `include:spf.protection.outlook.com -all`, TXT `MS=ms28511729`. Never touch the mail records.
-- `_config.yml` stops Jekyll (GitHub Pages) publishing `CLAUDE.md`, `PLAN.md`, `docs/` and `monitor.json` on the live domain. Add any new non-site file to its `exclude` list.
-- Branch `full-site-wip` (remote only) holds an older multi-page draft (about, services, gallery, contact, thank-you). It is not deployed and predates the current one-pager.
+### Live today: `master` (one-pager on GitHub Pages)
+
+- `master` holds the single-page site (`index.html`, `404.html`, `images/`, `CNAME`, `_config.yml`). It is served by **GitHub Pages**, legacy build from `master` root, custom domain `www.sunshinebuilt.com.au`, HTTPS enforced.
+- **Pushing to `master` deploys to the live site within a minute.** Hard stop: Mitch's OK first.
+- The repo is **public** (GitHub Pages on a free plan needs it). It goes private at the DNS cutover (Mitch, 2026-11-22).
+- DNS: nameservers `ns1-3.nameserver.net.au` (VentraIP, VIPControl). Apex: four GitHub Pages A records, 301 to `www`; `www` CNAME `mayhem777.github.io`. Mail: MX `sunshinebuilt-com-au.mail.protection.outlook.com`, SPF `include:spf.protection.outlook.com -all`, TXT `MS=ms28511729`. Never touch the mail records.
+- `_config.yml` on master stops Jekyll publishing the notes files on the live domain.
+
+### Being built: branch `astro-rebuild` (multi-page Astro site)
+
+- **Never merge `astro-rebuild` into `master` before the cutover.** The branch moves the one-pager into `legacy/`, so GitHub Pages would serve a broken site. The order is in `docs/multi-page-proposal.md`.
+- Astro 7 static site. `npm run build` = `astro build` + `scripts/check-site.mjs`. Output `dist/`.
+- All business facts live in `src/site.ts`; the licence line is `src/components/LicenceLine.astro` (top bar) and the footer, both from `src/layouts/Base.astro`, so every page gets them.
+- Content: `src/content/work/` (case studies, `draft: true` by default) and `src/content/gallery/` (photos, `hidden: false` by default; trade groups in `src/content.config.ts`). Photos for them live in `src/assets/work/` and `src/assets/gallery/`, optimised by Astro (AVIF/WebP).
+- **Held-back photos:** Astro copies the original of *every* image a content entry points at into `dist/_astro`, even when the page filters the entry out. `scripts/held-back.mjs` + the `drop-held-back-photos` integration in `astro.config.mjs` delete originals used only by hidden gallery items or draft case studies, and the check script fails the build if one is left. Don't remove either.
+- Decap CMS at `/admin/` (`public/admin/config.yml`): GitHub backend on `master`, editorial workflow (Nat's edits wait for Mitch), sign-in through the existing `sth-oauth` Worker. It only works once the Astro site is on `master`, and Nat needs a GitHub account with write access.
+- Contact form: `functions/api/contact.js` (Pages Function). Sending is OFF unless `CONTACT_SEND_ENABLED=true`; while off it logs the submission and shows the thank-you page. Honeypot field `website` + Cloudflare Turnstile (test keys until real ones are set). Sends with Microsoft Graph from info@ to info@. Settings listed at the top of the file.
+- `public/_redirects`: old Squarespace and old one-pager URLs. Old one-page anchors `#about-h` and `#contact-h` are redirected by a small script on the home page.
+- Gotcha: after deleting a photo that a content entry used, a build can fail with `ImageNotFound` from a stale cache. Fix: `rm -rf .astro node_modules/.astro` and build again.
 
 ## Previews
 
-GitHub Pages has no branch previews, so previews go to the Cloudflare Pages **direct-upload** project `sunshine-built-preview` (production branch set to `production-unused`, so every upload is a preview). Pages preview URLs get `X-Robots-Tag: noindex` automatically (checked 2026-11-22). A new site file must be added to the `git archive` list below.
+GitHub Pages has no branch previews, so previews go to the Cloudflare Pages **direct-upload** project `sunshine-built-preview` (production branch `production-unused`, so every upload is a preview). Preview URLs get `X-Robots-Tag: noindex` automatically.
+
+Astro branch (from the repo root, so `functions/` is included):
+
+```
+cd ~/repos/sunshine-built && npm run build && npx wrangler pages deploy dist --project-name sunshine-built-preview --branch <branch-name> --commit-dirty=true
+```
+
+One-pager branches (`master`-based):
 
 ```
 cd ~/repos/sunshine-built
@@ -47,5 +67,7 @@ Preview address: `https://<branch-name>.sunshine-built-preview.pages.dev`. Run w
 
 ## Checks before saying done
 
-- Serve locally (`python3 -m http.server`, stop it afterwards by PID) and screenshot at 390 × 844 and 1366 × 680: no horizontal scroll, licensee line visible and readable in the hero and the footer.
+- Astro branch: `npm run build` must end with "All checks passed." Then `npx wrangler pages dev dist` (stop it by PID afterwards, and the `workerd` child too) and screenshot every page at 390 × 844 and 1366 × 680: no horizontal scroll, licence line readable in the top bar and footer.
+- One-pager: serve locally (`python3 -m http.server`, stop it by PID) and screenshot at the same two widths.
+- Photos: no people, number plates, house numbers or street views. Captions about the trade only: never a suburb, address or client name, and never "renovation" unless it was one.
 - Live check after an approved deploy: `curl -s https://www.sunshinebuilt.com.au/ | cmp - index.html`.

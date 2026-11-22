@@ -1,2 +1,7 @@
-images/*.Identifier
+node_modules/
+dist/
+.astro/
 .wrangler/
+.dev.vars
+images/*.Identifier
+notes.local.md

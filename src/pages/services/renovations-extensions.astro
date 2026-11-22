@@ -1,0 +1,27 @@
+---
+import ServicePage from '../../components/ServicePage.astro';
+import Todo from '../../components/Todo.astro';
+---
+<ServicePage title="Renovations & extensions" heading="Renovations and extensions"
+  description="Kitchen and bathroom renovations, room additions and extensions across Noosa and the Sunshine Coast by a QBCC licensed builder."
+  intro="Kitchens, bathrooms, room additions and extensions. One builder looking after the job from the first site visit to handover."
+  trades={['Extensions & renovations', 'Bathrooms & ensuites', 'Kitchens & joinery']}
+  cta="Planning a renovation or extension? Tell us what you have in mind.">
+  <h2>What we do</h2>
+  <ul>
+    <li>Kitchen renovations</li>
+    <li>Bathroom and ensuite renovations</li>
+    <li>Room additions and extensions</li>
+    <li>Internal changes: walls moved, rooms opened up, new layouts</li>
+  </ul>
+  <h2>How a job runs</h2>
+  <ol class="steps">
+    <li><strong>Site visit.</strong> We come out, look at the house and talk through what you want.</li>
+    <li><strong>Scope and quote.</strong> You get a written scope of works and a quote, so you know what is and isn't included.</li>
+    <li><strong>Plans and approvals.</strong> Where the work needs drawings or building approval, we work with your designer and certifier, or point you to people we know.</li>
+    <li><strong>The build.</strong> We run the job and organise the trades.</li>
+    <li><strong>Handover.</strong> We walk through the finished work with you.</li>
+  </ol>
+  <Todo>check the five steps above match how you actually run a renovation job</Todo>
+  <Todo slot="no-photos">renovation, bathroom and kitchen photos go here once the NAS photos are copied in</Todo>
+</ServicePage>

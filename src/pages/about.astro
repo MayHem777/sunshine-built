@@ -1,0 +1,37 @@
+---
+import Base from '../layouts/Base.astro';
+import QuoteCta from '../components/QuoteCta.astro';
+import Todo from '../components/Todo.astro';
+import { SITE } from '../site';
+---
+<Base title="About us" description={`${SITE.name} is a Noosaville building company, on the tools since 2004. ${SITE.licence}.`}>
+  <section class="hero page-hero">
+    <div class="wrap">
+      <span class="mono eyebrow">About</span>
+      <h1>About Sunshine Built</h1>
+      <p class="sub">A Noosaville building company working across Noosa and the Sunshine Coast. On the tools since 2004.</p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="prose">
+        <p>Sunshine Built takes on renovations and extensions, insurance repairs, shop fit-outs, carpentry and decks, and custom cedar saunas. You deal with one builder from the first site visit to handover, and we'll scope the job properly before anyone starts talking numbers.</p>
+        <Todo>a few lines in your own words: who runs the jobs, how you got into building, what you care about on site. Plus a photo of you or the team if you want one</Todo>
+        <p>Modular granny flats, secondary dwellings and tiny homes are built by our sister company, Sunshine Tiny Houses, in Noosaville. Conventional building on site stays with Sunshine Built.</p>
+      </div>
+      <h2 style="margin-top:2.5rem">The details</h2>
+      <dl class="facts">
+        <div><dt>Trading name</dt><dd>{SITE.name}</dd></div>
+        <div><dt>Licensee</dt><dd>{SITE.legalName}</dd></div>
+        <div><dt>QBCC licence</dt><dd>{SITE.licenceNumber} ({SITE.licenceClass})</dd></div>
+        <div><dt>ABN</dt><dd>{SITE.abn}</dd></div>
+        <div><dt>Experience</dt><dd>{SITE.experience}</dd></div>
+        <div><dt>Insurance</dt><dd>Insured</dd></div>
+        <div><dt>Based in</dt><dd>{SITE.locality} QLD</dd></div>
+        <div><dt>Service area</dt><dd>Noosa &amp; Sunshine Coast</dd></div>
+      </dl>
+      <p class="muted" style="margin-top:1rem">You can check our licence on the QBCC website (<a href="https://www.qbcc.qld.gov.au/your-property/build-renovate/finding-contractor-getting-quotes/find-licensed-contractor">find a licensed contractor</a>).</p>
+      <QuoteCta />
+    </div>
+  </section>
+</Base>

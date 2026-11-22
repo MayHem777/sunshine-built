@@ -1,0 +1,85 @@
+---
+import '../styles/global.css';
+import Header from '../components/Header.astro';
+import Footer from '../components/Footer.astro';
+import { SITE } from '../site';
+import ogImage from '../assets/brand/sb-logo-olive.png';
+import { getImage } from 'astro:assets';
+
+interface Props {
+  title: string;
+  description: string;
+  noindex?: boolean;
+  schema?: Record<string, unknown>[];
+}
+const { title, description, noindex = false, schema = [] } = Astro.props;
+const canonical = new URL(Astro.url.pathname, SITE.url).href;
+const og = await getImage({ src: ogImage, format: 'png', width: 849 });
+const ogUrl = new URL(og.src, SITE.url).href;
+const fullTitle = title.includes(SITE.name) ? title : `${title} | ${SITE.name}`;
+
+const business = {
+  '@context': 'https://schema.org',
+  '@type': 'GeneralContractor',
+  '@id': `${SITE.url}/#business`,
+  name: SITE.name,
+  legalName: SITE.legalName,
+  url: `${SITE.url}/`,
+  logo: ogUrl,
+  image: ogUrl,
+  telephone: SITE.phoneIntl,
+  email: SITE.email,
+  taxID: `ABN ${SITE.abn}`,
+  address: { '@type': 'PostalAddress', addressLocality: SITE.locality, postalCode: '4566', addressRegion: SITE.region, addressCountry: 'AU' },
+  areaServed: [
+    { '@type': 'Place', name: 'Noosa' },
+    { '@type': 'Place', name: 'Sunshine Coast' },
+  ],
+  hasCredential: {
+    '@type': 'EducationalOccupationalCredential',
+    credentialCategory: 'license',
+    name: `${SITE.licence} (${SITE.licenceClass})`,
+    recognizedBy: { '@type': 'GovernmentOrganization', name: 'Queensland Building and Construction Commission' },
+  },
+};
+---
+<!doctype html>
+<html lang="en-AU">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <title>{fullTitle}</title>
+  <meta name="description" content={description} />
+  {noindex ? <meta name="robots" content="noindex, follow" /> : <link rel="canonical" href={canonical} />}
+  <meta property="og:type" content="website" />
+  <meta property="og:site_name" content={SITE.name} />
+  <meta property="og:locale" content="en_AU" />
+  <meta property="og:url" content={canonical} />
+  <meta property="og:title" content={fullTitle} />
+  <meta property="og:description" content={description} />
+  <meta property="og:image" content={ogUrl} />
+  <meta property="og:image:alt" content={`${SITE.name}, licensed builder, Noosa QLD`} />
+  <meta name="twitter:card" content="summary" />
+  <meta name="twitter:title" content={fullTitle} />
+  <meta name="twitter:description" content={description} />
+  <meta name="twitter:image" content={ogUrl} />
+  <link rel="icon" href="/images/favicon-32.png" sizes="32x32" type="image/png" />
+  <link rel="apple-touch-icon" href="/images/sb-icon-180.png" />
+  <meta name="theme-color" content="#1a1a16" />
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Archivo:wght@400;500;600&family=IBM+Plex+Mono:wght@500&display=swap" rel="stylesheet" />
+  <script type="application/ld+json" set:html={JSON.stringify(business)} />
+  {schema.map((s) => <script type="application/ld+json" set:html={JSON.stringify(s)} />)}
+  <slot name="head" />
+</head>
+<body>
+  <a class="skip" href="#main">Skip to content</a>
+  <Header />
+  <main id="main">
+    <slot />
+  </main>
+  <Footer />
+  <a class="callbar" href={SITE.phoneHref}>Call {SITE.phone}</a>
+</body>
+</html>

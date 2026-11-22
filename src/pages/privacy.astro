@@ -1,0 +1,24 @@
+---
+import Base from '../layouts/Base.astro';
+import Todo from '../components/Todo.astro';
+import { SITE } from '../site';
+---
+<Base title="Privacy" description={`How ${SITE.name} handles the personal details you send us.`}>
+  <section class="hero page-hero"><div class="wrap"><span class="mono eyebrow">Privacy</span><h1>Privacy</h1></div></section>
+  <section class="band">
+    <div class="wrap prose">
+      <Todo>read this through and confirm it matches how you handle enquiries (it's plain-English, not legal advice)</Todo>
+      <p>This page explains how {SITE.name} ({SITE.legalName}) handles personal details you give us through this website, by phone or by email.</p>
+      <h2>What we collect</h2>
+      <p>When you send an enquiry we collect what you give us: your name, phone number, email address, the suburb of the job and what the job is about.</p>
+      <h2>Why we collect it</h2>
+      <p>To reply to your enquiry, quote and carry out the work, and keep the records a builder has to keep. We don't use it for anything else and we don't sell or rent it to anyone.</p>
+      <h2>Who else sees it</h2>
+      <p>Enquiries arrive as email in our Microsoft 365 mailbox. We may share job details with the trades, suppliers, designers, certifiers or insurers working on your job, only as far as they need for that job.</p>
+      <h2>Spam protection and cookies</h2>
+      <p>The contact form uses Cloudflare Turnstile to check that a person, not a bot, is sending it. Turnstile may process technical details about your browser and device for that check. This site doesn't use advertising or tracking cookies. Fonts load from Google Fonts, which receives your IP address when the page loads.</p>
+      <h2>Seeing or correcting your details</h2>
+      <p>To ask what we hold about you, have it corrected or raise a concern, email <a href={`mailto:${SITE.email}`}>{SITE.email}</a> or call {SITE.phone}.</p>
+    </div>
+  </section>
+</Base>

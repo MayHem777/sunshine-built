@@ -1,0 +1,25 @@
+---
+import { Picture } from 'astro:assets';
+import { getCollection } from 'astro:content';
+import { TRADES } from '../content.config';
+interface Props { trades?: string[]; grouped?: boolean; limit?: number }
+const { trades, grouped = false, limit } = Astro.props;
+// hidden photos never reach the page (and so never reach the build output)
+let items = (await getCollection('gallery', (e) => !e.data.hidden && (!trades || trades.includes(e.data.trade))))
+  .sort((a, b) => a.data.order - b.data.order);
+if (limit) items = items.slice(0, limit);
+const groups = grouped ? TRADES.map((t) => ({ t, list: items.filter((i) => i.data.trade === t) })).filter((g) => g.list.length) : [{ t: '', list: items }];
+---
+{items.length === 0 ? <slot name="empty" /> : groups.map((g) => (
+  <>
+    {g.t && <h3 class="trade-h">{g.t}</h3>}
+    <div class="gallery">
+      {g.list.map((i) => (
+        <figure>
+          <Picture src={i.data.image} alt={i.data.alt} formats={['avif', 'webp']} widths={[400, 800]} sizes="(max-width: 600px) 100vw, 360px" />
+          <figcaption>{i.data.caption}</figcaption>
+        </figure>
+      ))}
+    </div>
+  </>
+))}

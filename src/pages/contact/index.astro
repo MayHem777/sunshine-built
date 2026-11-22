@@ -1,0 +1,67 @@
+---
+import Base from '../../layouts/Base.astro';
+import { SITE, SERVICES } from '../../site';
+// Cloudflare's always-pass test key unless a real one is set at build time.
+const turnstileKey = import.meta.env.PUBLIC_TURNSTILE_SITE_KEY || '1x00000000000000000000AA';
+---
+<Base title="Contact us and get a quote" description={`Get a quote from ${SITE.name}, Noosa. Call ${SITE.phone}, email ${SITE.email} or send the job details.`}>
+  <Fragment slot="head"><script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script></Fragment>
+  <section class="hero page-hero">
+    <div class="wrap">
+      <span class="mono eyebrow">Contact</span>
+      <h1>Get a quote</h1>
+      <p class="sub">Tell us about the job. Quotes are free. We work across Noosa and the Sunshine Coast.</p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap contact-grid">
+      <div>
+        <h2>Send us the details</h2>
+        <p id="form-error" class="form-error" role="alert" hidden></p>
+        <form class="form" method="post" action="/api/contact">
+          <div><label for="name">Your name</label><input id="name" name="name" autocomplete="name" required maxlength="100" /></div>
+          <div><label for="phone">Phone</label><input id="phone" name="phone" type="tel" autocomplete="tel" required maxlength="30" /></div>
+          <div><label for="email">Email <span class="opt">(optional)</span></label><input id="email" name="email" type="email" autocomplete="email" maxlength="200" /></div>
+          <div><label for="suburb">Suburb of the job</label><input id="suburb" name="suburb" required maxlength="80" /></div>
+          <div>
+            <label for="jobType">Type of job</label>
+            <select id="jobType" name="jobType" required>
+              <option value="">Choose one</option>
+              {SERVICES.filter((s) => !('stub' in s)).map((s) => <option>{s.name}</option>)}
+              <option>Something else</option>
+            </select>
+          </div>
+          <div><label for="message">About the job</label><textarea id="message" name="message" required maxlength="4000" placeholder="What needs doing, rough size, when you'd like it done"></textarea></div>
+          <div class="hp" aria-hidden="true"><label for="website">Leave this empty</label><input id="website" name="website" tabindex="-1" autocomplete="off" /></div>
+          <div class="cf-turnstile" data-sitekey={turnstileKey}></div>
+          <p class="muted" style="font-size:.92rem">We use your details only to reply about your job. See our <a href="/privacy/">privacy page</a>.</p>
+          <div><button class="btn btn-solid" type="submit">Send</button></div>
+        </form>
+      </div>
+      <aside>
+        <h2>Or call or email</h2>
+        <p class="mono muted" style="margin-top:1rem">Phone</p>
+        <p><a class="big-link" href={SITE.phoneHref}>{SITE.phone}</a></p>
+        <p class="mono muted" style="margin-top:1rem">Email</p>
+        <p><a class="big-link" href={`mailto:${SITE.email}`}>{SITE.email}</a></p>
+        <dl class="facts" style="margin-top:2rem">
+          <div><dt>Licensee</dt><dd>{SITE.legalName}</dd></div>
+          <div><dt>QBCC licence</dt><dd>{SITE.licenceNumber}</dd></div>
+          <div><dt>Based in</dt><dd>{SITE.locality} QLD</dd></div>
+          <div><dt>Service area</dt><dd>Noosa &amp; Sunshine Coast</dd></div>
+        </dl>
+      </aside>
+    </div>
+  </section>
+  <script is:inline>
+    (function () {
+      var e = new URLSearchParams(location.search).get('error');
+      var msgs = {
+        missing: 'Please fill in your name, phone, suburb, type of job and a few words about it.',
+        check: 'The spam check didn’t go through. Please tick it again and resend.',
+        send: 'Something went wrong sending your message. Please call or email us instead.'
+      };
+      if (e && msgs[e]) { var el = document.getElementById('form-error'); el.textContent = msgs[e]; el.hidden = false; }
+    })();
+  </script>
+</Base>

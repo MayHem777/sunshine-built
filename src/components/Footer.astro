@@ -1,0 +1,31 @@
+---
+import { Image } from 'astro:assets';
+import logo from '../assets/brand/sb-logo-white.png';
+import { SITE, SERVICES } from '../site';
+const year = new Date().getFullYear();
+---
+<footer class="site-foot">
+  <div class="wrap">
+    <div class="cols">
+      <div>
+        <Image src={logo} alt={SITE.name} width={150} />
+        <p>{SITE.experience}. {SITE.insurance}.</p>
+        <p>Based in {SITE.locality}, working across {SITE.serviceArea}.</p>
+      </div>
+      <div>
+        <p class="mono" style="margin-bottom:.75rem">Services</p>
+        <ul>{SERVICES.filter((s) => !('stub' in s)).map((s) => <li><a href={`/services/${s.slug}/`}>{s.name}</a></li>)}</ul>
+      </div>
+      <div>
+        <p class="mono" style="margin-bottom:.75rem">Contact</p>
+        <ul>
+          <li><a href={SITE.phoneHref}>{SITE.phone}</a></li>
+          <li><a href={`mailto:${SITE.email}`}>{SITE.email}</a></li>
+          <li><a href="/contact/">Get a quote</a></li>
+          <li><a href="/privacy/">Privacy</a></li>
+        </ul>
+      </div>
+    </div>
+    <p class="legal">© {year} <strong>{SITE.name}</strong>, a trading name of <strong>{SITE.legalName}</strong> · <strong>{SITE.licence}</strong> ({SITE.licenceClass}) · ABN {SITE.abn}</p>
+  </div>
+</footer>

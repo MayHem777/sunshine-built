@@ -1,0 +1,38 @@
+---
+import Base from '../../layouts/Base.astro';
+import QuoteCta from '../../components/QuoteCta.astro';
+import { Picture } from 'astro:assets';
+import { getCollection, render } from 'astro:content';
+export async function getStaticPaths() {
+  // draft case studies get no page at all
+  const studies = await getCollection('work', (e) => !e.data.draft);
+  return studies.map((s) => ({ params: { slug: s.id }, props: { s } }));
+}
+const { s } = Astro.props;
+const { Content } = await render(s);
+---
+<Base title={`${s.data.title}, ${s.data.area}`} description={s.data.summary}>
+  <section class="hero page-hero">
+    <div class="wrap">
+      <span class="mono eyebrow"><a href="/our-work/" style="color:inherit">Our work</a> / {s.data.jobType}</span>
+      <h1>{s.data.title}</h1>
+      <p class="sub">{s.data.summary}</p>
+    </div>
+  </section>
+  <section class="band">
+    <div class="wrap">
+      <div class="prose"><Content /></div>
+      {s.data.photos.length > 0 && (
+        <div class="gallery" style="margin-top:2rem">
+          {s.data.photos.map((p) => (
+            <figure>
+              <Picture src={p.image} alt={p.alt} formats={['avif', 'webp']} widths={[400, 800]} sizes="(max-width: 600px) 100vw, 360px" />
+              {p.caption && <figcaption>{p.caption}</figcaption>}
+            </figure>
+          ))}
+        </div>
+      )}
+      <QuoteCta />
+    </div>
+  </section>
+</Base>
