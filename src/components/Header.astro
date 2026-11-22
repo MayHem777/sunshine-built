@@ -21,7 +21,7 @@ const current = (href: string) => (path === href || (href !== '/' && path.starts
 <header class="site-head">
   <div class="wrap">
     <a class="brand" href="/" aria-label={`${SITE.name} home`}>
-      <Image src={logo} alt={SITE.name} width={150} loading="eager" />
+      <Image src={logo} alt={SITE.name} width={150} densities={[1, 2]} loading="eager" />
     </a>
     <nav class="nav" aria-label="Main">
       {links.map((l) => <a href={l.href} aria-current={current(l.href)}>{l.label}</a>)}
