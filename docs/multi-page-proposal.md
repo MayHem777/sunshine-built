@@ -82,11 +82,11 @@ Smaller alternative if Mitch doesn't want to move nameservers: keep DNS at Ventr
 
 About 1 to 2 sessions to build the site, redirects, schema, form and CMS once real content exists; half a session for the cutover with Mitch on hand.
 
-## Decisions for Mitch (recommended answer first)
+## Decisions (Mitch, 2026-11-22)
 
-1. Go ahead only once 3 real finished jobs with photos are gathered? **Yes**: the test that the site will have content.
-2. Move nameservers to Cloudflare at cutover? **Yes**: apex support, email sending, matches the other sites.
-3. Form email route? **Cloudflare Email Sending if the price is nil or cents; otherwise Graph from info@.**
-4. Nat edits through Decap with Mitch publishing (editorial workflow)? **Yes**: Nat can't break the live site.
-5. Show the Noosaville street address on the site and in schema? **Suburb only** unless the workshop takes walk-ins.
-6. Make the repo private at cutover? **Yes.**
+1. Approved in principle. **Build only once 3 real finished jobs with photos are gathered.**
+2. Move nameservers to Cloudflare at cutover: **yes**.
+3. Form email route: **Microsoft 365 Graph `sendMail` from info@sunshinebuilt.com.au** (option 2), unless a blocker turns up. Needs a send-only Entra app limited to that mailbox (a credential: Mitch's OK when it's created).
+4. Nat's edits wait for Mitch's approval (Decap editorial workflow): **yes**.
+5. Show Noosaville only, no street address: **yes**.
+6. Repo private at cutover: **yes**.
