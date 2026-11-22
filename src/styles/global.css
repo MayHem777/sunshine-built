@@ -135,10 +135,6 @@ span.todo{display:inline-block;margin:0}
 @media(min-width:880px){.contact-grid{grid-template-columns:1.2fr .8fr}}
 .big-link{font-size:clamp(1.2rem,1rem + 1vw,1.6rem);font-weight:600;color:var(--olive);word-break:break-word}
 
-/* sister */
-.sister{display:block;margin-top:1.75rem;border:1px solid var(--rule);border-left:3px solid var(--olive);padding:1.25rem;background:var(--paper-lt);text-decoration:none}
-.sister:hover{border-color:var(--olive)}
-
 /* footer */
 .site-foot{background:var(--ink);color:rgba(244,239,229,.85);padding-block:2.5rem 2rem;font-size:.95rem}
 .site-foot .cols{display:grid;gap:1.75rem}

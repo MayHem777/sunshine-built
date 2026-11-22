@@ -21,7 +21,7 @@ const studies = (await getCollection('work', (e) => !e.data.draft)).sort((a, b) 
       <div class="sec-head"><span class="mono">Case studies</span><span class="rule"></span></div>
       <h2 id="cs-h">Recent jobs</h2>
       {studies.length === 0 ? (
-        <Todo>no case studies are published yet. Two are written as drafts in the CMS (Ninderry extension, Noosa retail fit-out) and are waiting on client permission and photos</Todo>
+        <Todo>no case studies are published yet. Two drafts are in the CMS: the Ninderry shed conversion (written, 9 photos, needs the client’s permission) and the Noosa retail fit-out (needs details, photos and the client’s OK)</Todo>
       ) : (
         <div class="grid">
           {studies.map((s) => (

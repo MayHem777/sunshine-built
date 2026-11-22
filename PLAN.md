@@ -6,7 +6,11 @@ A truthful, compliant website for Sunshine Built (licensee M.J. Croft Pty Ltd AT
 ## Next steps
 1. DONE 2026-11-22: licensee name + wording ("On the tools since 2004", "QBCC licensed and insured") live on master (70d6e14).
 2. **Build hold lifted (Mitch, 2026-11-22): build what we can now.** Multi-page Astro site on branch `astro-rebuild`, preview https://astro-rebuild.sunshine-built-preview.pages.dev. Pages, CMS, form (sending off), redirects, schema and checks are done.
-3. Photos and the Ninderry write-up are BLOCKED: Claudio can't read the NAS share (see Waiting on Mitch). Once unblocked: copy + unzip `STH/_Claude/Sunshine Built/sunshine-built-site-photos.zip` into `src/assets/gallery/`, one `src/content/gallery/*.md` per photo with honest trade captions (captions.csv column 3 is an internal note), crop the watermark on A9, skip A10, E1–E4 as `hidden: true`; pick 8–12 finished Ninderry photos (NAS folders listed in `notes.local.md`, git-ignored because the repo is public) (no people, plates, house numbers, street) and write the case study from the job files.
+3. 2026-11-22 (Mitch said yes to option 1): NAS read through the Sunshine Files connector only, read-only, no permission changes.
+   - Ninderry case study written from the job files (quote Q1170 v7, final documentation) with 9 finished photos (rotated, metadata incl. GPS stripped, ute and a hire-company logo cropped out). Still `draft: true`; its photos are removed from the build.
+   - Ninderry photos over the connector's 4,000,000-byte limit were skipped, including every kitchen shot: 075411, 075417, 075701, 080426, 080819, 080916, 081233, 081255, 081512, 081522, 081530, 081544, 081636, 071719. Left out on purpose: 081727 (car reflected in the window, neighbouring house), 075857 (duplicate of the shower).
+   - Gallery photos still BLOCKED: `sb-photos-part1.zip` / `sb-photos-part2.zip` are not in `STH/_Claude/Sunshine Built` (only the 5.5 MB zip, over the 4 MB limit). Once they are there: unzip into `src/assets/gallery/`, one `src/content/gallery/*.md` per photo with trade-only captions (captions.csv column 3 is an internal note), crop the watermark on A9, skip A10, E1–E4 `hidden: true`.
+   - Sister-company box removed from Home; the one line on About stays.
 4. Cutover (later, each step asks Mitch): follow `docs/multi-page-proposal.md`.
 
 ## Assumptions
@@ -24,7 +28,8 @@ A truthful, compliant website for Sunshine Built (licensee M.J. Croft Pty Ltd AT
 - 2026-11-22: Privacy page written in plain English, marked for Mitch to check; not legal advice.
 
 ## Waiting on Mitch
-- **NAS access for photos (blocker):** the share `//192.168.50.244/STH` is mounted by the Sunshine Files service as user `sunfiles` (files 0440, credentials in root-only `/etc/sunshine-files/smb.cred`); Mitch's login on Claudio can't read it and sudo needs a password. Options in the build summary.
+- **Gallery photo zips:** save `sb-photos-part1.zip` and `sb-photos-part2.zip` (each under 4 MB) into `STH/_Claude/Sunshine Built/`. Read them through the Sunshine Files connector (Mitch, 2026-11-22), never the SMB mount.
+- Ninderry kitchen photos: all over 4 MB. A smaller copy of 1–2 kitchen shots would complete the case study.
 - Every [MITCH: ...] placeholder (the check script lists them on each build).
 - Contact form switch-on (Microsoft send-only app, Turnstile keys): list in `docs/contact-form-switch-on.md`.
-- Gather client permission for the Ninderry case study; finished-store photos + client OK for the Noosa fit-out.
+- Client permission for the Ninderry case study (also check the write-up against what was built); finished-store photos + client OK for the Noosa fit-out.

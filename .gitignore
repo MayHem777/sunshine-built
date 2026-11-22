@@ -5,3 +5,4 @@ dist/
 .dev.vars
 images/*.Identifier
 notes.local.md
+dist-draft-check/
