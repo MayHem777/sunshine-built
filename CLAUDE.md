@@ -30,12 +30,13 @@ Website for **www.sunshinebuilt.com.au**. Read this file and `PLAN.md` before ch
 
 ## Previews
 
-GitHub Pages has no branch previews, so previews go to the Cloudflare Pages **direct-upload** project `sunshine-built-preview` (production branch set to `production-unused`, so every upload is a preview). Pages preview URLs get `X-Robots-Tag: noindex` automatically.
+GitHub Pages has no branch previews, so previews go to the Cloudflare Pages **direct-upload** project `sunshine-built-preview` (production branch set to `production-unused`, so every upload is a preview). Pages preview URLs get `X-Robots-Tag: noindex` automatically (checked 2026-11-22). A new site file must be added to the `git archive` list below.
 
 ```
-rm -rf /tmp/sb-preview && mkdir /tmp/sb-preview && git archive HEAD | tar -x -C /tmp/sb-preview
-rm -rf /tmp/sb-preview/{CLAUDE.md,PLAN.md,docs,monitor.json,_config.yml}
-cd ~/repos/sunshine-built && npx wrangler pages deploy /tmp/sb-preview --project-name sunshine-built-preview --branch <branch-name>
+cd ~/repos/sunshine-built
+D=$(mktemp -d)
+git archive HEAD -- 404.html CNAME images index.html robots.txt sitemap.xml | tar -x -C "$D"   # site files only, never the notes
+npx wrangler pages deploy "$D" --project-name sunshine-built-preview --branch <branch-name> --commit-dirty=true
 ```
 
 Preview address: `https://<branch-name>.sunshine-built-preview.pages.dev`. Run wrangler from the repo, never from `~`. Never use `--branch production-unused`.
