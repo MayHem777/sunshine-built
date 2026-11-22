@@ -15,7 +15,9 @@ Website for **www.sunshinebuilt.com.au**. Read this file and `PLAN.md` before ch
 
 1. **Licensee name and QBCC number sitewide.** Every page (including the 404 page and any thank-you page) shows the licensee name *M.J. Croft Pty Ltd ATF The Croft Trust* together with *QBCC licence 15205110*, legible (body-size text, good contrast, not a tiny grey mono label alone) and reasonably prominent: in the header or hero area and in the footer. Check it on a phone width before calling any change done.
 2. **Real content only.** No invented projects, photos, reviews, testimonials, star ratings, awards, statistics or client names. If content is missing, leave a clear placeholder in the branch and list it under "Waiting on Mitch" in `PLAN.md`; never fill it with something made up. Stock or template sample pages (the old Squarespace site had template pages such as `/float-house`, `/cultural-center`, `/greenspacing`) are not our projects.
-   - Experience wording: say "on the tools on the Sunshine Coast since 2004". Never claim the business itself is 20 years old (no "twenty years", "two decades", "20+ years", "established").
+   - Experience wording: say **"On the tools since 2004"**. Do not say the experience was on the Sunshine Coast (the apprenticeship location isn't confirmed). Never claim the business itself is 20 years old (no "twenty years", "two decades", "20+ years", "established").
+   - Insurance wording: say **"QBCC licensed and insured"**. Never "fully insured" or "fully insured on every project" (full cover on Sunshine Built jobs isn't confirmed).
+   - Both can be strengthened **only after Mitch confirms** (2026-11-22: not yet confirmed).
 3. **Australian English and metric units only** (mm, m, m²). Never show imperial.
 4. **Never assume anyone's gender**; use names, roles or "they".
 5. **Workflow:** work on a feature branch, never on `master`/`main`. Publish a preview URL and show it to Mitch. Merge and deploy to production **only after Mitch approves in that session.** Never force-push.
